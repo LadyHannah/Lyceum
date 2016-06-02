@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<#include "common/meta.html">
+</head>
+<script type="text/javascript">
+$(function() {
+	var po = ${po.jsonString};
+	
+	//submit
+	$('#images_form').form({
+		onSubmit: function() {
+			if ($('input[name=title]').val() == '') {
+				$.messager.alert('提示', '请填写标题!', 'warning');
+				return false;
+			}
+			if ($('input[name=imgUrl]').val() == '') {
+				$.messager.alert('提示', '图片地址为空,请上传图片!', 'warning');
+				return false;
+			}
+			if ($('input[name=titleKey]').val() == '') {
+				$.messager.alert('提示', '请填写英文名称!', 'warning');
+				return false;
+			}
+			var isValid = $(this).form('validate');
+			if (!isValid) {
+				alert("表单验证失败，请检查各输入项是否按照要求填写");
+			}
+			return isValid;
+		},
+		success: function(data) {
+			if (data == 'true') {
+				$.messager.confirm('提示ʾ', '保存成功', function(r){
+					if (r){
+						window.location.href='<@url value="/cms/images"/>';
+					}
+				});
+			} else {
+				$.messager.alert('提示','保存失败', 'warning', function() {$('#images_form').form('reset');});
+			}
+		}
+	}).form('load', po);
+	
+	$('#btn_cancel').click(function() {
+		window.history.back();
+	});
+});
+
+
+</script>
+<body class="easyui-layout">
+<div class="widget-box">
+	<div class="widget-title"><i class="icon-align-justify"></i>
+	<h5><#if po.id??>编辑<#else>新增</#if>图片信息</h5>
+	</div>
+	<form id="images_form" action="<@url value='/cms/images/edit'/>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id">
+	<div class="widget-content nopadding">
+		<div id="p1" class="easyui-panel">
+			<table style="width: 100%;" class="form">
+				<tr>
+					<th><em>*</em>标题</th>
+					<td colspan="3">
+						<input type="text" style="width: 500px;" id="title" name="title"/>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>所属目录</th>
+					<td colspan="3">
+						<input type="text" style="width: 500px;" id="parentTitle" name="parentTitle" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>图片地址</th>
+					<td colspan="3">
+						<input type="text" style="width: 250px;" id="imgUrl" value="${po.imgUrl}" disabled="disabled">
+						<input type="file" style="width: 235px;" name="file"/>
+						<!-- <input type="text" style="width: 500px;" id="imgUrl" name="imgUrl">
+						<button class="btn btn-info" id="uploadImage">上传</button> -->
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>英文名称</th>
+					<td colspan="3">
+						<input type="text" style="width: 500px;" id="titleKey" name="titleKey">
+					</td>
+				</tr>
+				<tr>
+					<th><em></em>排序号</th>
+					<td colspan="3">
+						<input type="text" style="width: 500px;" id="orderIndex" name="orderIndex">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="form-actions">
+		<button class="btn btn-info" type="submit">保存</button>
+		<button class="btn btn-info" id="btn_cancel">取消</button>
+	</div>
+	</form>
+</div>
+</body>
+</html>

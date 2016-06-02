@@ -1,0 +1,50 @@
+<!--top开始-->
+<div class="top">
+  <div class="le"></div>
+  <div class="ri"></div>
+  <div class="header">
+    <div class="header-left">
+      <a href="${request.contextPath}/"><div class="logo"><div class="telgif"><img src="${request.contextPath}/themes/images/telephone_number.gif" width="247" height="47"></div></div></a>
+    </div>
+    <div class="header-right">
+   	<#if user?? >
+				<div class="user">
+					HI~欢迎您：<img src="${request.contextPath}/themes/images/user-icon.png" width="24" height="24"><strong>${user.key}</strong>
+					
+					<span class="exit">| <a href="${request.contextPath}/${url1}">进入主页</a></span>
+					
+					<span class="exit">| <a href="<@url value='/asf/logout'/>">退出</a></span>
+				</div>
+				<span class="time">${user.lastLoginTime}</span><span class="welcome">浙江省老有所为网感谢您的加入</span>
+	<#else>
+      <span class="gr"> <a href="${request.contextPath}/register/gr">个人注册</a>&nbsp;|&nbsp;<a href="${request.contextPath}/login/gr">登录</a> </span>
+      <span class="qy"> <a href="${request.contextPath}/register/company">企业注册</a>&nbsp;|&nbsp;<a href="${request.contextPath}/login/company">登录</a> </span>
+      <span class="zyz"> <a href="${request.contextPath}/register/volunteerOrg">志愿者组织注册</a>&nbsp;|&nbsp;<a href="${request.contextPath}/login/volunteerOrg">登录</a> </span>
+   </#if>
+    </div>
+  </div>
+  <div class="nav">
+    <ul class="mainmenu">
+      <li class="index"> <a href="${request.contextPath}/" > 首页 </a> </li>
+      <li class="llw/zpxx"> <a href="${request.contextPath}/col/llw-zpxx"> 招聘信息 </a> </li>
+      <li class="llw/grqz"> <a href="${request.contextPath}/col/llw-grqz"> 个人求职 </a> </li>
+      <li class="llw/zyzhd"> <a href="${request.contextPath}/col/llw-zyzhd"> 志愿活动 </a> </li>
+      <li class="llw/gzdt"> <a href="${request.contextPath}/col/llw-gzdt-lysw"> 工作动态 </a> </li>
+      <li class="llw/zxzc"> <a href="${request.contextPath}/col/llw-zxzc-gdzx""> 资讯·政策 </a> </li>
+      <li class="llw/gywm"> <a href="${request.contextPath}/col/llw-gywm-lxwm"> 关于我们 </a> </li>
+    </ul>
+  </div>
+</div>
+<!--top结束-->
+<script>
+var col = "${columnKey}";
+$(".nav li").each(function() {
+	var str = $(this).attr('class');
+	if (col != "") {
+		if (col.substring(0, str.length) == str){
+			$(".nav li").removeClass("yes");
+			$(this).addClass("yes");
+		}
+	}
+});
+</script>

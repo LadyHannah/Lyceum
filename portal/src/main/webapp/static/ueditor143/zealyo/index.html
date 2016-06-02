@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link href="../../../uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="../../../jquery/easyui132/themes/gray/easyui.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../jquery/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../../../jquery/easyui132/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../../../uploadify/jquery.uploadify.js"></script>
+	<style type="text/css">
+		img.selected {
+			border: 2px solid green;
+		}
+	</style>
+	</head>
+	<body style="margin: 0px">
+		<div id="cc" class="easyui-layout" fit="true" style="border: 0px;">
+			<div region="west" title="文件夹目录" style="width:140px;height:340px;">
+				<ul id="tt" data-options="onContextMenu: function(e,node){e.preventDefault(); $(this).tree('select',node.target); $('#mm').menu('show',{  left: e.pageX, top: e.pageY}); }"></ul>
+			</div>
+			<div region="center" title="图片列表" style="width:500px;height:340px;">
+				<div class="easyui-layout" fit="true" style="border: 0px;">
+					<div region="center" >
+						<table id="tabb"></table>
+					</div>
+					<div region="south" style="background-color: #EEE;">
+				<input type="file" name="uploadify" id="multiple_file_upload" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="dd" title="My Dialog" style="width:420px;height:300px;">
+			<div id="some_file_queue" style="overflow-y:auto;"></div>
+		</div>
+		<div id="mm" class="easyui-menu" style="width: 80px; display: none;">
+			<div onclick="newFolder()" data-options="iconCls:'icon-add'">新建文件夹</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	$(function(){
+		var name = '';
+		$('#tt').tree({
+		    url: '../../../folderManager.htm?action=find&name='+'',
+		    onBeforeExpand: function(node) {
+		    	var nod = node;
+		    	var arr = [];
+		    	arr.push(nod.text);
+		    	nod = $('#tt').tree('getParent',nod.target);
+		    	if(nod != null){
+		    		var root = $('#tt').tree('getRoot');
+			    	while(nod.target != root.target){
+			    		arr.push(nod.text);
+			    		nod = $('#tt').tree('getParent',nod.target);
+			    	}
+			    	var name1 =arr.reverse().join('/');
+			    	$("#tt").tree("options").url = '../../../folderManager.htm?action=find&name=' + encodeURIComponent(name1);
+		    	}else{
+			    	$("#tt").tree("options").url = '../../../folderManager.htm?action=find&name=' + '';
+		    	}
+		    	
+		    },
+		    onLoadSuccess: function(node, data) {
+		    	/**
+				*第一次锁定文件夹
+				**/
+				if(name == ''){
+					var date = getServerTime();
+					var year, month, day;
+					year = date.getYear();
+					if (year < 2000) {
+						year += 1900;
+					}
+					month = add_zero(date.getMonth() + 1);
+					day = add_zero(date.getDate());
+					name = year + '' + month; 
+			    	$.each($('#tt').tree('getChildren', $('#tt').tree('getRoot').target), function(index, node) {
+			    		if (node.text == name) {
+			    			$("#tt").tree('select', node.target);
+			    		}
+			    	});
+				}
+		    },
+		    onSelect: function(node) {
+		    	var nod = node;
+		    	var arr = [];
+		    	arr.push(nod.text);
+		    	nod = $('#tt').tree('getParent',nod.target);
+		    	if(nod != null){
+		    		var root = $('#tt').tree('getRoot');
+			    	while(nod.target != root.target){
+			    		arr.push(nod.text);
+			    		nod = $('#tt').tree('getParent',nod.target);
+			    	}
+			    	var name1 =arr.reverse().join('/');
+			    	name = name1;
+		    	}else{
+			    	name = '';
+		    	}
+				find(name);
+			}
+		});
+		
+		
+		
+		$("#multiple_file_upload").uploadify({  
+            'height'        : 18,   
+            'width'         : 80,    
+            'buttonText'    : '上传本地',  
+            'swf'           : '../../../uploadify/uploadify.swf',  
+            'uploader'      : '../../../uploadManager.htm?action=upload', 
+            'fileSizeLimit' : '10MB',
+            'queueID'       : 'some_file_queue',
+            'auto'          : true, 
+            'multi'         : true,
+            'fileTypeExts'  : '*.jpg;*.png;*.gif;*.bmp;*.jpeg',  
+            'onUploadStart' : function(file) { 
+            	$("#multiple_file_upload").uploadify('settings', "formData", {'realPath': name });
+            	$('#dd').dialog({
+            	    modal:true,
+            	    buttons: [{
+    					text:'Cancel',
+    					handler:function(){
+    						$('#multiple_file_upload').uploadify('cancel', '*');
+    					}
+    				}]
+            	});
+            },
+            'onQueueComplete' : function(file) {
+            	$.messager.alert('消息', '上传完成!');
+            	$('#dd').dialog('close');
+            	find(name);
+            }
+        });  
+	});
+	
+	function find(name){
+		var parent = name;
+		$.ajax({
+			type : "post",
+			dataType: 'json',
+			data:{
+				"parent":parent
+			},
+			url : '../../../folderManager.htm?action=pic',
+			success : function(data) {
+				$("#tabb").html("");
+				var t = $('#tabb')[0];
+				var r, c;
+				r = t.insertRow(0);
+				var temp;
+				for (var i = 0; i < data.list.length; i++){
+					if ((i % 4) == 0) {
+						r = t.insertRow(i / 4);	
+					}
+					c = r.insertCell();
+        			c.innerHTML ="<div style='margin:5px'><img onclick='usePic(this);' style='width:90px;height:80px;cursor: pointer;' src='"+data.dir+"/"+ data.list[i].name+"'></img></div>";
+				}
+			}
+		});
+	}
+	
+	function usePic(obj){
+		if(parent.window.location.href.indexOf('ueditor')>-1){
+			$(obj).toggleClass('selected');
+			var paths = [];
+			$('img.selected').each(function() {
+				paths.push($(this).attr('src'));
+			});
+			parent.document.getElementById('sth').value = paths.join('|');
+		}else{
+			$('img').removeClass('selected');
+			$(obj).addClass('selected');
+			parent.document.getElementById('imgUrls').value = $(obj).attr('src');
+		}
+		
+	}
+
+	function add_zero(temp) {
+		if (temp < 10) return "0" + temp;
+	    else return temp;
+	}
+	
+	/**
+	*新建文件夹
+	*/
+	function  newFolder(){
+		$.messager.prompt('新建文件夹', '请输入文件夹名称', function(r){
+			if (r){
+				var reg = new RegExp('^[\\^/:*?"<>|]+$');
+				if(reg.test(r)){
+					$.messager.alert("警告", "文件夹名称不符合规范");
+					return ;
+				}
+				var nod = $('#tt').tree('getSelected');
+				var arr = [];
+		    	arr.push(r);
+		    	arr.push(nod.text);
+		    	nod = $('#tt').tree('getParent',nod.target);
+		    	if(nod != null){
+		    		var root = $('#tt').tree('getRoot');
+			    	while(nod.target != root.target){
+			    		arr.push(nod.text);
+			    		nod = $('#tt').tree('getParent',nod.target);
+			    	}
+			    	var name1 =arr.reverse().join('/');
+			    	$.ajax({
+			    		type : "post",
+						dataType: 'json',
+						data:{
+							"path":name1
+						},
+						url : '../../../folderManager.htm?action=newFolder',
+						success : function(data) {
+							if(data.ret == 'exist'){
+								$.messager.alert("警告", "文件夹已存在");
+							}else{
+								var selected = $('#tt').tree('getSelected');
+								if(null == nodes){
+									$('#tt').tree('append', {
+										parent: selected.target,
+										data: [{
+											text: r,
+											state:'closed',
+											attributes:r
+										}]
+									});
+								}else{
+									$('#tt').tree('insert', {
+										before: nodes[0].target,
+										data: {
+											text: r,
+											state:'closed',
+											attributes:r
+										}
+									});
+								}
+							}
+						}
+			    	});
+		    	}else{
+		    		$.ajax({
+			    		type : "post",
+						dataType: 'json',
+						data:{
+							"path":r
+						},
+						url : '../../../folderManager.htm?action=newFolder',
+						success : function(data) {
+							if(data.ret == 'exist'){
+								$.messager.alert("警告", "文件夹已存在");
+							}else{
+								var selected = $('#tt').tree('getSelected');
+								var nodes = $('#tt').tree('getChildren',selected.target);
+								if(null == nodes){
+									$('#tt').tree('append', {
+										parent: selected.target,
+										data: [{
+											text: r,
+											state:'closed',
+											attributes:r
+										}]
+									});
+								}else{
+									$('#tt').tree('insert', {
+										before: nodes[0].target,
+										data: {
+											text: r,
+											state:'closed',
+											attributes:r
+										}
+									});
+								}
+								
+							}
+						}
+		    	    });
+		    	}
+			}
+		});
+	}
+	
+	/**
+	 * 获取服务器时间
+	 */
+	function getServerTime() {
+		//因程序执行耗费时间,所以时间并不十分准确,误差大约在2000毫秒以下 
+		var xmlHttp = false;
+		//获取服务器时间 
+		try {
+			xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e2) {
+				xmlHttp = false;
+			}
+		}
+		if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+			xmlHttp = new XMLHttpRequest();
+		}
+		xmlHttp.open("GET", "null.txt?n=" + new Date().getTime(), false);
+		xmlHttp.setRequestHeader("Range", "bytes=-1");
+		xmlHttp.send(null);
+		return new Date(xmlHttp.getResponseHeader("Date"));
+	}
+	</script>
+</html>

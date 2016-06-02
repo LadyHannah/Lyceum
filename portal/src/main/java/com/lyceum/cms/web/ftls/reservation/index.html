@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<#include "common/meta.html">
+<script type="text/javascript" src="${request.contextPath}/js/jquery.easyui.min.js"></script>
+<style>
+	.layout-panel-north { 
+		height: 30px;
+	}
+</style>
+</head>
+<body class="easyui-layout">
+<div id="tb" class="status" style="padding:0px;">
+  <div class="status-header">
+    <h1>预约试听</h1>
+    <div class="btn-group">
+		<a class="btn btn-large tip-bottom" title="删除" onclick="javascript:del();"><i class="icon-pl"></i><span class="btn-txt">删除</span></a>
+	</div>
+    <div class="btn-group">
+		<a class="btn btn-large tip-bottom" title="新增预约" id="add_button" href="<@url value='/cms/reservation/edit/new' />">
+			<i class="icon-add"></i><span class="btn-txt">新增</span>
+		</a>
+	</div>
+  </div>
+  <div class="search">
+      <div style="float: left;">
+      	<input type="text" name="name" style="width: 300px;" placeholder="请输入姓名">
+		<select class="easyui-combobox" id="language" name="language" editable=false style="width: 300px;" >
+			<option value="0">请选择</option>
+			<option value="1">国际英语</option>
+			<option value="2">日语</option>
+			<option value="3">韩语</option>
+			<option value="4">德语</option>
+			<option value="5">法语</option>
+			<option value="6">意大利语</option>
+			<option value="7">西班牙语</option>
+ 		</select> 
+      </div>
+      <div class="toolbar" style="float: left;margin-left: 20px;">
+        <button id="easyui-search" class="btn btn-info" style="width: 51px;height: 30px;">查询</button>
+      </div>
+    </div>
+</div>
+<table id="reservationGrid"></table>
+
+<script type="text/javascript">
+$(function() {
+	
+	$('#easyui-search').click(function(){
+		$('#reservationGrid').datagrid('load', {name: $('.search input[name=name]').val(), language: $('#language').combobox('getValue')});
+	});
+	
+	$('#reservationGrid').datagrid({
+		loadMsg: '正在加载，请稍候...',
+		singleSelect: false,
+		fit: true,
+		nowrap: false,
+		fitColumns: true,
+		pagination: true,
+		rownumbers: true,
+		idField: 'id',
+		url: '<@url value="/cms/reservation/find"/>',
+		toolbar: '#tb',
+		columns: [[
+			{field: 'ck', checkbox:true, width: 5, align: 'center'},
+		    {field: 'name', title: 'Name', width: 20, align: 'center'},
+		    {field: 'languageStr', title: 'Language', width: 20, align: 'center'},
+		    {field: 'email', title: 'Email', width: 20, align: 'center'},
+		    {field: 'phone', title: 'Phone', width: 20, align: 'center'},
+		    {field: 'operate', title: 'Operation', width: 20, align: 'center',
+				formatter: function(value, rec) {
+					return '<a href="<@url value="/cms/reservation/edit/'+ rec.id +'" />">Edit</a>';
+				}
+			}
+			
+		]]
+	});
+});
+
+//删除
+function del() {
+	var sels = $('#reservationGrid').datagrid('getSelections');
+	if (sels.length == 0) {
+		$.messager.alert('操作提示', '请选择要删除的记录！', 'warning');
+	}else{
+		$.messager
+		.confirm('操作提示', '您确认要删除选中的&nbsp;<font size=5 color = red>'
+						+ (sels.length) + '</font>&nbsp;条记录吗？',
+				function(r) {
+							if (r) {
+								var ids = "";
+								for (var i = 0; i < sels.length; i++) {
+									ids += sels[i].id + ",";
+								}
+								$.ajax({
+									   type: "POST",
+									   url: "<@url value='/cms/reservation/delete'/>",
+									   data: "ids="+ids,
+									   success: function(msg){
+										   $("#reservationGrid").datagrid("clearSelections");
+										   $('#reservationGrid').datagrid('reload');
+									   }
+									});
+							}
+						});
+	}
+}
+</script>
+</body>
+</html>

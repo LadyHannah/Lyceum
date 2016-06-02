@@ -1,0 +1,691 @@
+﻿@charset "utf-8";
+*{margin:0;padding:0;list-style:none;border:0;}
+body{width:100%;margin:0 auto;}
+@media (min-width: 1200px){
+	.container {
+		width: 990px;
+	}
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+} 
+h1 {
+	font-family: "微软雅黑";
+	font-size: 44px;
+	text-align: center;
+}
+h2 {
+	color: #333;
+	font-family: "微软雅黑";
+	text-align: center;
+	font-size: 44px;
+}
+h3 {
+	color: #92cce7;
+	text-align: center;
+	font-family: "Helvetica", "微软雅黑";
+	font-size: 20px;
+	color: #6e6f91;
+	margin: 15px 0 15px 0;
+}
+p {
+	font-size: 15px;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+h4 {
+	font-size: 28px;
+	font-family: "微软雅黑";
+	color: #333;
+}
+h5 {
+	font-size: 22px;
+	font-family: "华文细黑";
+	text-align: center;
+	color: #636188;
+	margin: 30px 0;
+}
+.weight {
+	font-weight: bold !important;
+}
+/*---nav---*/
+.header {
+	position: relative;
+}
+.header .navbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 111;
+	width: 100%;
+}
+.navbar-nav>li {
+	padding: 16px 23px;
+} 
+.navbar-nav>li>a {
+	color: #fff;
+	font-family: "微软雅黑";
+	font-size: 16px;
+}
+.navbar-nav>li>a:hover {
+	background: none;
+}
+.sign {
+	padding: 0 !important;
+}
+.sign a {
+	background: url('../images/logo.png') no-repeat;
+	width: 40px;
+	height: 56px;
+	float: left;
+	background-size: 100% 100%;
+	padding: 0 !important;
+	margin: 14px 23px;
+}
+.sign a:hover {
+	background: url('../images/logo.png') no-repeat !important;
+}
+.navbar-header {
+	width: 100%;
+}
+.navbar-nav {
+	width: 100%;
+}
+
+.carousel-indicators {
+	bottom: 10px;
+}
+.index .carousel-indicators {
+	bottom: 50px;
+}
+.Lyceum {
+	position: absolute;
+	top: 23%;
+	width: 100%;
+}
+.Lyceum .title h1 {
+	color: #fff;
+	font-size: 60px;
+	font-family: "华文细黑";
+	text-align: center;
+	font-weight: normal;
+}
+.Lyceum .title p {
+	color: #fff;
+	font-size: 24px;
+	font-family: "Helvetica";
+}
+.Lyceum .listening {
+	text-align: center;
+	margin: 257px 0 0 0;
+}
+.index .Lyceum .listening {
+	margin: 234px 0 0 0;
+}
+.Lyceum .listening button {
+	border: 1px solid #fff;
+	border-radius: 4px;
+	background: none;
+	color: #fff;
+	font-size: 20px;
+	padding: 8px 25px; 
+	font-family: "华文细黑";
+}
+.Lyceum .listening p {
+	width: 228px;
+	color: #fff;
+	font-size: 20px;
+	margin: 20px auto 0 auto;
+	background: url(../images/tel.png) no-repeat left center;
+	opacity: 1 !important;
+}
+/*-----english-----*/
+.english {
+	background: #f0f0f0;
+	padding: 30px 0 20px 0;
+}
+.english p {
+	color: #484443;
+	line-height: 22px;
+}
+.english .row .col-md-6 {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 7px 13px; 
+}
+.english .row .col-md-6 {
+	width: 57%;
+}
+.english .row {
+	margin: 40px 0 40px 0;
+}
+.english .row h3 {
+	text-align: left;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	margin: 10px 0 15px 0;
+}
+.english h4 {
+	font-size: 26px; 
+}
+.english .row .col-md-4 {
+	padding-left: 0;
+	padding-right: 0;  
+}
+.english .row .col-md-4 img {
+	width: 100%;
+	border-radius: 8px;
+}
+.english .col-md-offset-1 {
+	margin-left: 2.333333%;
+}
+.language {
+	padding: 50px 0;
+}
+.language p {
+	margin: 0 0 50px 0;
+}
+.language img{
+	width: 100%;
+}
+.language .col-md-4 {
+	padding-right: 10px;
+	padding-left: 10px; 
+	margin: 10px 0;
+}
+.language .on {
+	z-index: 99;
+}
+.language .on img{
+	height: auto; 
+}
+.team .intro img {
+	width: 100%;
+}
+.team {
+	background: #383f49;
+	padding: 60px 0 60px 0;
+}
+.team h2 {
+	color: #fff;
+}
+.team h3 {
+	font-size: 22px;
+	color: #edf1f4;
+	padding: 3px 0 5px 0;
+}
+.team p {
+	color: #edf1f4;
+	margin: 15px 0 35px 0;
+}
+.listen {
+	background-size: 100% 100%;
+	min-height: 800px;
+}
+.listen h2 {
+	margin: 88px 0 0 0;
+	color: #fff;
+}
+.listen h3 {
+	font-size: 14px;
+	color: #fff;
+}
+.listen .register {
+	width: 43%;
+	margin: 0 auto;
+	padding: 36px 0 0 0;
+	text-align: center;
+}
+.listen .register input {
+	background: #fff;
+	outline: none;
+	border-radius: 8px; 
+	width: 100%;
+	line-height: 40px;
+	height: 40px;
+	padding: 25px 145px 25px 15px;
+	float: left;
+	font-size: 18px;
+	margin: 3px 0;
+	font-family: "微软雅黑";
+}
+.validate {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.validate .error {
+	position: absolute;
+	right: 10px;
+	top: 16px;
+	background: url(../images/error.png) left center no-repeat;
+	color: #ff0000;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	padding: 0 0 0 20px;
+}
+.listen .register textarea {
+	margin: 3px 0 0 0;
+	border-radius: 8px;
+	width: 100%;
+	font-size: 18px;
+	padding: 15px 15px;
+	outline: none;
+}
+.listen .register button {
+	font-family: "Helvetica";
+	border: 4px solid #fff;
+	border-radius: 5px; 
+	padding: 7px 30px;
+	font-size: 24px;
+	background: none;
+	color: #fff;
+	margin: 10px 0 0 0;
+}
+.case {
+	padding: 20px 0 30px 0;
+}
+.case p {
+	margin: 15px 0 35px 0;
+}
+.real img {
+	width: 100%;
+}
+.joincon {
+	padding: 30px 0 30px 0;
+}
+.joincon img {
+	width: 100%;
+}
+.act {
+	padding: 20px 0 30px 0;
+}
+.fang img {
+	width: 100%;
+}
+.guideline {
+	background: #f0f0f0;
+	padding: 30px 0;
+}
+.guideline strong {
+	display: block;
+	text-align: center;
+	margin: 20px 0 10px 0;
+}
+.guideline .extra {
+	font-size: 14px;
+	color: #666;
+}
+.service img {
+	width: 100%;
+}
+.guarantee {
+	padding: 50px 0 50px 0;
+}
+.guarantee h3 {
+	margin-bottom: 30px; 
+}
+.guarantee p {
+	text-align: left;
+	font-size: 14px;
+}
+.guarantee i {
+	font-style: normal;
+	color: #636188;
+}
+.merits .pic {
+	width: 58%;
+	float: left;
+}
+.merits .pic img {
+	width: 100%;
+}
+.merits .con {
+	width: 42%;
+	float: left;
+	padding: 40px;
+	background: #a2a9af;
+}
+.merits .con p {
+	font-size: 14px;
+	text-align: left;
+	color: #fff;
+}
+.merits h5 {
+	text-align: center;
+	color: #fefeff;
+	font-size: 20px;
+	font-family: "微软雅黑";
+}
+.charge {
+	background: #ebf0f3;
+	clear: both;
+	padding: 30px 0 20px 0;
+}
+.charge h3 {
+	margin: 20px 0 40px 0;
+}
+.charge .col-md-4 img {
+	width: 100%;
+}
+.charge .col-md-4 h6 {
+	font-size: 16px;
+	font-family: "微软雅黑";
+	margin: 15px 0 25px 0;
+}
+.charge .col-md-4 p {
+	font-size: 14px;
+	text-align: left;
+}
+.charge .tips {
+	color: #615f86;
+	font-family: "微软雅黑";
+	margin: 20px 0;
+}
+.totel {
+	padding: 20px 0 30px 0;
+}
+.totelimg img {
+	width: 100%;
+}
+.course {
+	background: url(../images/japanese_bg.png) repeat-y center top;
+}
+.course .col-md-6 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.course table td, th {
+	padding: 0 7px;
+	text-align: center;
+}
+.course table td {
+	border-bottom: 1px dashed #abb0d8;
+	font-size: 14px;
+	color: #534d4d;
+	font-family: "华文细黑";
+}
+.course table th {
+	padding: 3px 3px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	font-family: "华文细黑";
+}
+.course .innormal p {
+	margin: 0 0 0 30px;
+	text-align: left;
+	font-size: 14px;
+	color: #666;
+}
+.course .innormal strong {
+	font-size: 15px;
+	color: #444;
+}
+.course {
+	padding: 35px 0 70px 0;
+}
+.fullimg img {
+	width: 100%;
+}
+.tour {
+	padding: 30px 0;
+}
+.tour p.tit {
+	margin: 5px 0 85px 0;
+}
+.tour .col-md-12 img {
+	width: 100%;
+} 
+.tour .col-md-6 {
+	margin: 20px 0;
+}
+.tour .col-md-6 span {
+	font-size: 18px;
+	width: 18px;
+	float: left;
+	line-height: 22px;
+	font-family: "微软雅黑";
+	margin: 0 20px 0 0;
+	color: #626286;
+}
+.tour .col-md-6 p {
+	float: left;
+	width: 390px;
+	font-size: 14px;
+	line-height: 22px;
+	text-align: left;
+}
+.train {
+	padding: 10px 0 40px 0;
+}
+.train img {
+	width: 100%;
+}
+.train h3 {
+	font-size: 30px;
+}
+.train h6 {
+	font-size: 16px;
+	font-family: "华文细黑";
+	font-weight: bold;
+	color: #333;
+	margin: 30px 0 10px 0;
+}
+.train .con p {
+	font-family: "华文细黑";
+	text-align: left;
+}
+.train .con strong {
+	color: #333;
+	font-family: "华文细黑";
+}
+.study {
+	background: #b5dbf2;
+	padding: 50px 0 80px 0;
+}
+.study img {
+	width: 100%;
+}
+.study h5, .good h5 {
+	font-size: 30px;
+}
+.study .col-md-6.right p {
+	text-align: right;
+	font-size: 14px;
+	margin: 0 0 3px 0;
+}
+.study .col-md-6.left p {
+	text-align: left;
+	font-size: 14px;
+	margin: 0 0 3px 0;
+}
+.korea {
+	background: #f6f8f3;
+	padding: 20px 0 0 0;
+}
+.good {
+	padding: 40px;
+}
+.good img {
+	width: 100%;
+}
+.good h5 {
+	margin: 30px 0 50px 0;
+}
+.italy {
+	background: #eaf2e7;
+}
+.spanish {
+	background: #f6f8f3;
+}
+.franch {
+	background: #e8f3f9;
+}
+.carousel-control.left, .carousel-control.right {
+	background: none;
+}
+.minotity .col-md-4 img {
+	width: 100%;
+}
+.teaching {
+	background: #f1f7f7;
+}
+.teaching img {
+	width: 100%;
+}
+.magazine {
+	font-size: 26px;
+	margin-bottom: 50px; 
+}
+.wechat {
+	background: #a2a9af;
+}
+.wechat h4 {
+	text-align: center;
+	color: #fff;
+	padding: 30px 0;
+}
+.wechat .title {
+	width: 300px;
+	margin: 30px 153px;
+	float: left;
+}
+.wechat .title p {
+	color: #fff;
+	font-size: 14px;
+	text-align: left;
+}
+.wechat .code {
+	float: left;
+	width: 160px;
+}
+.wechat .code img {
+	width: 100%;
+	margin: 40px 0 0 0;
+}
+.wechat .tip {
+	width: 20px;
+	float: left;
+	margin: 52px 0 0 5px;
+	color: #fff;
+	font-size: 12px;
+	line-height: 14px;
+}
+.wechat .more {
+	margin: 90px 0 0 0;
+}
+.Lyceum h1 {
+	color: #fff;
+	padding: 49px 0 0 0;
+	font-size: 58px;
+}
+.Lyceum p {
+	color: #fff;
+	opacity: 0.8;
+	line-height: 26px;
+	margin: 30px 0 0 0;
+}
+.mb15 {
+	margin-bottom: 15px; 
+}
+
+/* diy_select */
+.diy_select { 
+	min-width: 100%; 
+	*width: 100%;
+	height: 50px; 
+	margin: 3px 0; 
+	position: relative; 
+	color: #000; 
+	float: left; 
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px; 
+	border-radius: 8px;
+	cursor: pointer; 
+	background: #fff;
+}
+.diy_select_btn, .diy_select_txt {
+    float: left;
+    height: 100%;
+    line-height: 50px;
+}
+.select-text {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+    width: 100%;
+}
+.diy_select_txt {
+    width: 90%;
+    text-align: left;
+    font-size: 18px;
+    font-family: "微软雅黑";
+}
+.diy_select_list li {
+    text-indent: 10px;
+    overflow: hidden;
+}
+.diy_select_btn {
+    width: 10%;
+    background: url(../images/select_log.png) no-repeat center;
+}
+.select-option {
+    width: 100%;
+}
+.diy_select_list {
+    height: 280px;
+    position: absolute;
+    top: 51px;
+    right: 0px;
+    z-index: 88888;
+    border-top: none;
+    width: 50%;
+    display: none;
+    background: #fff;
+    overflow: auto;
+}
+.diy_select_list li {
+    margin: 0 20px;
+    list-style: none;
+    height: 40px;
+    line-height: 40px;
+    cursor: default;
+    background: #fff;
+    font-family: "微软雅黑";
+}
+.diy_select_list li.focus {
+    margin: 0;
+    padding: 0 20px;
+    cursor: pointer;
+    background: #666;
+    color: #fff
+}
+.korbg {
+	background: url(../images/korea_bg.png) repeat-y center top
+}
+.gerbg {
+	background: url(../images/germany_bg.png) repeat-y center top
+}
+.itabg {
+	background: url(../images/italy_bg.png) repeat-y center top
+}
+.frabg {
+	background: url(../images/franch_bg.png) repeat-y center top
+}
+.pink {
+	color: #efa7a1;
+}
+.brown {
+	color: #544c4a;
+}
+.green {
+	color: #b0ca9d;
+}
+.red {
+	color: #e24744;
+}
+.blue {
+	color: #97cadd;
+}

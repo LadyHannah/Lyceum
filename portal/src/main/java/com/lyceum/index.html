@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>吕克昂国际教育</title>
+	<link type="text/css" rel="stylesheet" href="${request.contextPath}/themes/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="${request.contextPath}/themes/css/style.css">
+	<script src="${request.contextPath}/js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="${request.contextPath}/js/jquery.event.drag.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/js/jquery.touchSlider.js"></script>
+
+	<script type="text/javascript">
+		$(function(){ 
+			// $('language col-md-4').hover(function() {
+			//     $(this).addClass('on');
+			//     var wl = $(this).find('img').attr('width');
+			//     if (wl < 190) {
+			//         $(this).find('.in').css('left', '0')
+			//     } else {
+			//         $(this).find('.in').css('left', -wl / 4)
+			//     }
+			// },
+			// function() {
+			//     $(this).animate({
+			//         height: "120px"
+			//     },
+			//     100).removeClass('on');
+			//     $(this).find('.in').css('left', '0')
+			// });
+		})
+	</script>
+</head>
+<body>
+	<div class="header index">
+		<nav class="navbar">
+			<div class="container">
+				<div class="navbar-header">
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="<@url value='/col/gjyy'/>" target="_blank">国际英语</a></li>
+							<li><a href="<@url value='/col/xyz'/>" target="_blank">小语种</a></li>
+							<li><a href="<@url value='/col/tdjs'/>" target="_blank">团队介绍</a></li>
+							<li class="sign"><a></a></li>
+							<li><a href="#listen">预约试听</a></li>
+							<li><a href="#">新闻动态</a></li>
+							<li><a href="#join">加入我们</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+			<!-- 当大于张图片时显示 -->
+		  <!-- <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		  </ol> -->
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		    <#if imagesList??>
+    			<#list imagesList as img>
+    				<#if img.titleKey == 'jdt'>
+    			<img src="<@url value='/cms/images/show?imgUrl=${img.imgUrl}'/>">
+    				</#if>
+    			</#list>
+    		<#else>
+		      	<img src="${request.contextPath}/themes/images/head-bg.jpg">
+    		</#if>
+		    </div>
+		  </div>
+		  <div class="Lyceum">
+		  	<div class="container">
+		  		<div class="listening">
+		  			<a href="#listen"><button>预约试听</button></a>
+		  			<p><i></i>0571&nbsp;-&nbsp;56022872</p>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+	</div>
+	<div class="english">
+		<div class="container">
+			<h2>国际英语</h2>
+			<h3>Internation English</h3>
+			<p>${gjyy_sub}</p>
+			<#if article??>
+				<#list article as art>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-1">
+					<h4>${art.title}</h4>
+					<h3>${art.subTitle}</h3>
+					<p class="text-left">${art.content}</p>
+				</div>
+				<div class="col-md-4 col-md-offset-1">
+					<img src="${request.contextPath}/themes/images/english_01.jpg" alt="">
+				</div>
+			</div>
+				</#list>
+			<#else>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-1">
+						<h4>托马斯ACT工坊</h4>
+						<h3>吕克昂国际教育旗下第一品牌</h3>
+						<p class="text-left">ACT考试新受重视，愿以真诚心与技术执念，为家长和学生提供回票价的教学。自TOEFL、ACT、SAT以至GRE、GMAT的美标考试，承袭一致的测试哲学与考核技法。本坊多年来以死磕精神破解美标思路，教研成果显著；ACT所重之逻辑与人文素养，恰为我坊强项，独特优势赋予团队充分自信。</p>
+					</div>
+					<div class="col-md-4 col-md-offset-1">
+						<img src="${request.contextPath}/themes/images/english_01.jpg" alt="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-1">
+						<h4>托福/雅思</h4>
+						<h3>TOEFL/IELTS</h3>
+						<p class="text-left">ACT考试新受重视，愿以真诚心与技术执念，为家长和学生提供回票价的教学。自TOEFL、ACT、SAT以至GRE、GMAT的美标考试，承袭一致的测试哲学与考核技法。本坊多年来以死磕精神破解美标思路，教研成果显著；ACT所重之逻辑与人文素养，恰为我坊强项，独特优势赋予团队充分自信。</p>
+					</div>
+					<div class="col-md-4 col-md-offset-1">
+						<img src="${request.contextPath}/themes/images/english_02.jpg" alt="">
+					</div>
+				</div>
+			</#if>
+		</div>
+	</div>
+	<div class="language">
+		<div class="container">
+			<h2>小语种</h2>
+			<h3>异邦言&nbsp;&&nbsp;欧亚语塾</h3>
+			<p>${xyz_sub}</p>
+			<div class="row">
+				<div class="col-md-4">
+					<a href="<@url value='/col/xyz-japanese'/>" target="_blank">
+						<img src="${request.contextPath}/themes/images/language_01.jpg" alt="">
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="<@url value='/col/xyz-korea'/>" target="_blank">
+						<img src="${request.contextPath}/themes/images/language_02.jpg" alt="">
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="<@url value='/col/xyz-germany'/>" target="_blank">
+						<img src="${request.contextPath}/themes/images/language_03.jpg" alt="">
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<a href="<@url value='/col/xyz-italy'/>" target="_blank">
+						<img src="${request.contextPath}/themes/images/language_04.jpg" alt="">
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="<@url value='/col/xyz-spanish'/>" target="_blank">
+						<img src="${request.contextPath}/themes/images/language_05.jpg" alt="">
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="<@url value='/col/xyz-franch'/>" target="_blank">
+						<img src="${request.contextPath}/themes/images/language_06.jpg" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="team">
+		<div class="container">
+			<h2>团队介绍</h2>
+			<h3>国际英语&欧亚语塾&nbsp;&nbsp;核心教研团队</h3>
+			<p>${tdjs_sub}</p>
+			<!-- <p>吕克昂国际教育集合了各地的优秀教师，形成了多元的教研团队，沉浸教学界多年的学院派，初出茅庐的年轻学霸，以及在留中国的多年外教,兼而有之，但有一点他们是共同的，中教师均持专业业内权威证书，专职外教具有三年以上教学经验与资源，因此可以说，吕克昂国际教育教研团队的专业化精，细化程度，业界难出其右，以下几位老师为吕克昂教研核心团队，为尊重个人隐私兼职教师暂不列出。</p> -->
+			<div class="intro">
+				<img src="${request.contextPath}/themes/images/team_01.jpg" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="case">
+		<div class="container">
+			<h2>真实案例</h2>
+			<h3>CASES</h3>
+			<p>${zsal_sub}</p>
+			<!-- <p>近几年部分学生案例，保证100%的真实性，但见一丝造假，接受任何诅咒，培训行无本坊之名。另外，案例描述中，</br>我们也为大家传达本坊一些重要的理念，方便大家客观的看待所谓的案例。</p> -->
+			<div class="real">
+				<img src="${request.contextPath}/themes/images/real.jpg">
+			</div>
+		</div>
+	</div>
+	<div id="listen" class="listen" style="background-image: url('${request.contextPath}/themes/images/listen.jpg')">
+		<div class="container">
+			<h2>预约试听</h2>
+			<h3>限时免费体验，注册即享免费试听课与优惠信息。</h3>
+			<div class="register">
+				<div class="validate">
+					<input type="text" name="name" placeholder="Name">
+					<div class="error error-name"></div>
+				</div>
+				<div class='diy_select validate'>
+				    <div class="select-text">
+				        <input type='hidden' name='language' class='diy_select_input' value="Language"/>
+				        <div class='diy_select_txt color9'>Language</div>
+				        <div class="error-language error"></div>
+				        <div class='diy_select_btn'></div>
+				    </div>
+				    <div class="select-option">
+				        <ul class='diy_select_list'>
+				            <li>国际英语</li>
+				            <li>日语</li>
+				            <li>韩语</li>
+				            <li>德语</li>
+				            <li>法语</li>
+				            <li>意大利语</li>
+				            <li>西班牙语</li>
+				        </ul>
+				    </div>
+				</div>
+				<div class="validate">
+					<input type="text" name="email" placeholder="Email">
+					<div class="error error-email"></div>
+				</div>
+				<div class="validate">
+					<input type="text" name="phone" placeholder="Phone">
+					<div class="error error-phone"></div>
+				</div>
+				<!-- <input type="textarea" name="message" placeholder="Message" rows="10"> -->
+				<textarea name="message" id="message" rows="3" placeholder="Message"></textarea>
+				<button id="regbtn">SUBMIT</button>
+			</div>
+		</div>
+	</div>
+	<div class="joinus" id="join">
+		<div class="container">
+			<div class="joincon">
+				<img src="${request.contextPath}/themes/images/join-us.jpg" alt="">
+			</div>
+		</div>
+	</div>
+	<script src="${request.contextPath}/js/select.js"></script>
+	<script type="text/javascript">
+		// 预约试听 验证
+		$(function(){
+			$('.register input[type=text]').focusout(function(){
+				var name = $(this).attr('name');
+				var val = $(this).val();
+				if(name == 'email') {
+					var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+					if(filter.test(val)) {
+						$('.error-'+name).html('').removeClass('mark');
+					}else{
+						$('.error-'+name).html('邮箱格式不正确').addClass('mark');;
+					}
+				}
+				if(name == 'phone') {
+					var filter = /^1[3|4|5|7|8]\d{9}$/;
+					if(filter.test(val)) {
+						$('.error-'+name).html('').removeClass('mark');
+					}else{
+						$('.error-'+name).html('手机格式不正确').addClass('mark');
+					}
+				}
+			});
+			$('.diy_select_list').click(function(){
+				var txt = $('.diy_select_txt');
+				var language = $('.register input[name=language]').val()
+				if(txt.hasClass('color9')) {
+					txt.removeClass('color9');
+				}
+				if(language != 'Language') {
+					$('.error-language').html('');
+				}
+			});
+			$('#regbtn').click(function(){
+				var flag = true;
+				var name = $('.register input[name=name]').val();
+				var email = $('.register input[name=email]').val();
+				var phone = $('.register input[name=phone]').val();
+				var language = $('.register input[name=language]').val();
+				var message = $('.register textarea[name=message]').val();
+				if(name == '') {
+					$('.error-name').html('姓名不能为空');
+					flag = false;
+				}
+				if(email == '') {
+					$('.error-email').html('邮箱不能为空');
+					flag = false;
+				}
+				if(phone == '') {
+					$('.error-phone').html('手机不能为空');
+					flag = false;
+				}
+				if(language == 'Language') {
+					$('.error-language').html('请选择语种');
+					flag = false;
+				}else{
+					switch(language) {
+					case "国际英语":
+					  language = '1';
+					  break;
+					case "日语":
+					  language = '2';
+					  break;
+					case "韩语":
+					  language = '3';
+					  break;
+					case "德语":
+					  language = '4';
+					  break;
+					case "法语":
+					  language = '5';
+					  break;
+					case "意大利语":
+					  language = '6';
+					  break;
+					case "西班牙语":
+					  language = '7';
+					  break;
+					}
+				}
+				$('.register .error').each(function(){
+					if($(this).hasClass('mark')) {
+						flag = false;
+					}
+				});
+				if(flag) {
+					console.log('校验成功');
+					$.ajax({
+		                 url:"<@url value='/cms/reservation/save'/>",
+		                 data: {name:name, language:language, email:email, phone:phone, message:message},
+		                 type:'POST',
+		                 success : function(result) {
+		                	if (result == true) {
+		                		alert("预约成功！");
+		         			} else {
+		         				alert("预约失败，请重新填写！")
+		         			}
+       						/* $('.register input[name=name]').val("");
+       						$('.register input[name=email]').val("");
+       						$('.register input[name=phone]').val("");
+       						$('.register input[name=language]').val("Language");
+       						$('.register textarea[name=message]').val(""); */
+       						
+       						window.location.reload();
+		                 }
+	             	});
+				}
+
+	
+			});
+		});
+	</script>
+</body>
+</html>

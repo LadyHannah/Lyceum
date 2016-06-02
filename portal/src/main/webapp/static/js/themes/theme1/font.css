@@ -1,0 +1,13 @@
+.form th { font-weight: normal; }
+.logo-title h2, .back-index, .form td, .uu h1, .form th, h1, .button, .user-icons, .user h2, .tree li, .center-body .text p { font-family: "微软雅黑"; }
+.red, .orange, .green, .back-index, .button { color: #fff; }
+.agency .title h1, .agency ul li b, .window .panel-title, .form td, .mohu ul li a, .form th, .l-btn, .user-icons, .center-body .text p { color: #666; }
+.uu h1, .user h2 a, .tree li { color: #333; }
+em { color: #F33; }
+.combobox-item, .combobox-group, .panel, .agency b, .calendar table td, .calendar table th, .bordered, select, input { font-size: 12px; }
+.agency p, .form-actions .btn-info { font-size: 13px !important; }
+.left-info h2, .form-horizontal .control-label, .search-label, .datagrid-header .datagrid-cell span, .help-block, .window .panel-title, .form td, .user h1, .user-icons, .tree li, .center-body .text p, .title h5 { font-size: 14px; }
+.widget-title h5, .messager-body { font-size: 15px; }
+.nav-cz p, .form-actions .btn, .agency .title h1, .back-index, .user h2, .nav-cz, .btns { font-size: 16px; }
+.status-header h1, .red, .orange, .green, .left-info h1, .logo-title h1, .button { font-size: 18px; }
+.uu h1 { font-size: 20px; }

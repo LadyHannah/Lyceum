@@ -1,0 +1,128 @@
+﻿.nav-cz .quit, .nav-cz .site, .nav-cz .version, .icon-edit, .icon-list, .icon-print, .icon-charge, .icon-remove {
+	display: inline-block;
+	width: 24px !important;
+	height: 24px;
+	cursor: pointer;
+	float: left;
+	margin: 13px 4px 0px 0px;
+	background: url('icons/easy-green-icon.png') no-repeat;
+}
+.icon-down, .icon-confirm, .icon-select, .icon-dr, .icon-sz {
+	display: inline-block;
+	width: 30px !important;
+	height: 24px;
+	cursor: pointer;
+	float: left;
+	margin: 0px 4px 0px 0px !important;
+	background: url('icons/easy-green-icon2.png') no-repeat;
+}
+.icon-down { background-position: -122px 0px; }
+.icon-confirm { background-position: -95px 0px; }
+.icon-select { background-position: -65px 0px; }
+.icon-sz { background-position: -35px 0px; }
+.icon-dr { background-position: -5px 0px; }
+.nav-cz .quit { background-position: 0px 0px; }
+.nav-cz:hover .quit { background-position: 0px -24px; }
+.nav-cz .site { background-position: -24px 0px; }
+.nav-cz:hover .site { background-position: -24px -24px; }
+.nav-cz .version { background-position: -48px 0px; }
+.nav-cz:hover .version { background-position: -48px -24px; }
+.icon-add, .icon-pl, .icon-import, .icon-export {
+	width: 21px;
+	height: 16px;
+	display: inline-block;
+	border-right: 1px solid #C4C9D9;
+	float: left;
+	margin: 5px 8px 0px 0;
+}
+.icon-add { background: url('icons/add.png') no-repeat; }
+.btn-group:hover .icon-add {
+	background: url('icons/add.png') no-repeat;
+	border-right: 1px solid #94E9E0;
+}
+.icon-pl { background: url('icons/pl.png') no-repeat; }
+.btn-group:hover .icon-pl {
+	background: url('icons/pl.png') no-repeat;
+	border-right: 1px solid #94E9E0;
+}
+.icon-import { background: url('icons/import.png') no-repeat; }
+.btn-group:hover .icon-import {
+	background: url('icons/import.png') no-repeat;
+	border-right: 1px solid #94E9E0;
+}
+.icon-export { background: url('icons/export.png') no-repeat; }
+.btn-group:hover .icon-export {
+	background: url('icons/export.png') no-repeat;
+	border-right: 1px solid #94E9E0;
+}
+.btn:hover .icon-edit { background-position: -96px -24px; }
+.icon-print { background-position: -168px 0px; }
+.btn:hover .icon-print { background-position: -168px -24px; }
+.icon-charge { background-position: -144px 0px; }
+.btn:hover .icon-charge { background-position: -144px -24px; }
+.icon-list {
+	background-position: -120px 0px;
+	margin: 1px 0px 0px 10px !important;
+}
+.icon-align-justify { background-position: -336px -48px }
+.icon-align-justify {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	float: left;
+	line-height: 14px;
+	margin: 9px 0px 0px 10px;
+	vertical-align: middle;
+	background: url('icons/glyphicons-halflings.png') no-repeat -262px 0px;
+}
+.win-add, .win-edit {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin: 5px 0px 0px 10px;
+}
+.win-add { background: url('icons/win-add.png') no-repeat; }
+.win-edit { background: url('icons/win-edit.png') no-repeat; }
+.icon-remove { background-position: -96px 0px; }
+.icon-remove:hover { background-position: -96px -36px; }
+.icon-cut { background-position: -108px 0px; }
+.icon-cut:hover { background-position: -108px -36px; }
+.icon-save { background-position: -142px 0px; }
+.icon-save:hover { background-position: -142px -36px; }
+.browse { background-position: -32px -176px !important; }
+.opt { background-position: -48px -176px !important; }
+.view { background-position: -48px -64px !important; }
+.delete {
+	background: url('images/tabs_close.png') no-repeat;
+	float: right;
+}
+.trash {
+	background: url('icons/trash.png') no-repeat;
+	margin-right: 2px;
+}
+.draft {
+	background: url('icons/draft.png') no-repeat;
+	margin-right: 2px;
+}
+.merge {
+	background: url('icons/merges.png') no-repeat;
+	margin-right: 2px;
+}
+.c-add { background-position: -64px -64px; }
+.c-delete { background-position: -64px -128px; }
+.c-save { background-position: -80px -128px; }
+.office-word {
+	position: absolute;
+	right: 5px;
+	top: 12px;
+	width: 16px;
+	height: 16px;
+	background: url('images/office-word.png') no-repeat;
+}
+.doc_pdf {
+	margin: 0px 5px;
+	width: 16px;
+	height: 16px;
+	background: url('images/doc_pdf.png') no-repeat;
+}

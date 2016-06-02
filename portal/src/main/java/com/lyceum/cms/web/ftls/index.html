@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<#include "common/meta.html">
+<title>吕克昂后台管理系统</title>
+</head>
+<body class="easyui-layout" oncontextmenu=self.event.returnValue=false> 
+	<div data-options="region: 'west'" style="width: 200px;overflow-x:hidden;" >
+		<div class="shortcut">
+			<span class="nav-cz" url="<@url value='/cms/column'/>">目录管理</span>
+			<span class="nav-cz" url="<@url value='/cms/info'/>">信息管理</span>
+			<span class="nav-cz yes" url="<@url value='/cms/images'/>">图片管理</span>
+			<span class="nav-cz" url="<@url value='/cms/reservation'/>">预约试听</span>
+		</div>
+	</div>
+	<div data-options="region: 'center'" style="overflow: hidden;">
+		<iframe id="content" src="" style="width: 100%;height: 100%;border: 0px;margin: 0;padding: 0;"></iframe>
+	</div>
+</body>
+<script type="text/javascript">
+
+$(function() {
+	$('.shortcut .nav-cz').click(function() {
+		if ($(this).attr('id') == 'logout') {
+			window.location.href = '';
+		} else {
+			$('#content').attr('src', $(this).attr('url'));
+			$('.shortcut .nav-cz').removeClass('yes');
+			$(this).addClass('yes');
+		}
+	});
+	
+	$('.shortcut .yes').click();
+});
+</script>
+</html>

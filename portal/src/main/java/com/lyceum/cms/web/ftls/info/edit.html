@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<#include "common/meta.html">
+</head>
+<script type="text/javascript">
+var po = ${po.jsonString};
+$(function() {
+	
+	//保存
+	$('#info_form').form({
+		onSubmit: function() {
+			if ($.trim($('#title').val()) == '') {
+				$.messager.alert('提示', '请填写标题!', 'warning');
+				return false;
+			}
+			if (UE.getEditor('editor').getContent() == '' ) {
+				$.messager.alert('提示', '请填写正文内容!', 'warning');
+				return false;
+			}
+			var isValid = $(this).form('validate');
+			if (!isValid) {
+				alert("表单验证失败，请检查各输入项是否按照要求填写");
+			}
+			return isValid;
+		},
+		success: function(data) {
+			$.messager.confirm('提示', '保存成功,是否关闭窗口？', function(r) {
+				if (r) {
+					if(window.opener.datagridreload()){
+						window.opener.datagridreload();
+					}
+					window.close();
+				} else {
+					$('#info_form').form('load',po);	
+					UE.getEditor('editor').setContent('');
+				}
+			});
+		}
+	}).form('load', po);
+	
+	$('#btn_cancel').click(function() {
+		window.close();
+	});
+});
+</script>
+<body class="easyui-layout" oncontextmenu=self.event.returnValue=false>
+<form id="info_form" action="<@url value='/cms/info/edit'/>" method="post">
+  <input type="hidden" name="id">
+  <input type="hidden" name="columnId" value="${colPO.id}">
+  <div data-options="region: 'north'" style="height:47px;">
+    <div class="title"><h5>新增信息</h5></div>
+  </div>
+  <div data-options="region:'east'" style="width:20%;">
+    <div class="center-body">
+      <span class="text">
+        <p>标题<em>*</em></p>
+        <textarea type="text" style="width: 60%;" id="title" name="title" rows="2" placeholder="请输入标题"></textarea>
+      </span>
+      <span class="text">
+        <p>副标题</p>
+        <textarea type="text" style="width:60%;" id="subTitle" name="subTitle" rows="2" placeholder="请输入副标题"></textarea>
+      </span>
+<!--  <span class="text">
+        <p>作者</p>
+        <input type="text" style="width: 60%;" id="author" name="author">
+      </span>
+	  <span class="text">
+        <p>关键字</p>
+        <input style="width: 60%;" id="keyWord" name="keyWord"></textarea>
+      </span> -->
+      <span class="text">
+        <p>信息摘要</p>
+        <textarea style="width: 60%;" id="infoAbstract" name="infoAbstract"></textarea>
+      </span>
+<!--       <span class="text">
+        <p>配图地址</p>
+        <input type="ueditorImage" style="width: 60%;" id="imgUrl" name="imgUrl">
+      </span> -->
+      <span class="text">
+        <p>发布时间</p>
+        <input type="datetime" style="width: 60%;" id="release" name="release" value="${po.release}" class="Wdate">
+      </span>
+<!--       <span class="text">
+        <p>信息等级</p>
+        <input type="text" style="width: 60%;" id="infoLevel" name="infoLevel">
+      </span>
+       <span class="text">
+        <p>内容分类</p>
+        <input type="text" style="width: 60%;" id="typeSTD" name="typeSTD">
+      </span>
+      <span class="text">
+        <p>链接路径</p>
+        <input type="text" style="width: 60%;" id="infoUrl" name="infoUrl">
+      </span>
+      <span class="text">
+        <p>来源名称</p>
+        <input type="text" style="width: 60%;" id="sourceName" name="sourceName">
+      </span>
+      <span class="text">
+        <p>置顶</p>
+        <input type="radio" id="toped" name="toped" value="true">是
+        <input type="radio" id="toped" name="toped" value="false">否
+      </span>
+      <span class="text">
+        <p>可留言</p>
+        <input type="radio" id="wordLeaved" name="wordLeaved" value="true">是
+        <input type="radio" id="wordLeaved" name="wordLeaved" value="false">否
+      </span> -->
+      <span class="text">
+        <p>修改时间</p>
+        <input type="text" style="width: 60%;" id="create" name="create" value="${po.create}" readonly="readonly">
+      </span>
+    </div>
+  </div>
+  <div data-options="region: 'center'" id="formCenter">
+    <div class="center-body">
+      <span class="text"> 
+        <script id="editor" name="content" type="text/plain" style="width:98.2%;height:395px; margin: 0 0 0 10px;">${po.content}</script>
+      </span>
+    </div>
+  </div>
+  <div data-options="region:'south',split:true" style="width: 100%; height:70px; text-align:center;">
+    <button class="btns btn-info" type="submit" >保 存</button>
+    <button class="btns btn-info" id="btn_cancel" >取 消</button>
+  </div>
+</form>
+
+	<script type="text/javascript" charset="utf-8" src="${request.contextPath}/ueditor143/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="${request.contextPath}/ueditor143/ueditor.all.js"></script>
+	<script type="text/javascript" charset="utf-8" src="${request.contextPath}/ueditor143/lang/zh-cn/zh-cn.js"></script>
+	<script type="text/plain" id="upload_ue"></script> 
+	
+<script type="text/javascript">
+
+$(function() {
+	$('input[type=datetime]').addClass('Wdate');
+	$('input[type=datetime]').click(function() {
+		WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});
+	});
+	
+	//重新实例化一个编辑器，防止在上面的editor编辑器中显示上传的图片或者文件
+    _editor = UE.getEditor('upload_ue');
+    _editor.ready(function () {
+        //设置编辑器不可用
+        //_editor.setDisabled();
+        //隐藏编辑器，因为不会用到这个编辑器实例，所以要隐藏
+        _editor.hide();
+        //侦听图片上传
+  /*       _editor.addListener('beforeInsertImage', function (t, arg) {
+            //将地址赋值给相应的input,只去第一张图片的路径
+            $('input[type=ueditorImage]').attr("value", arg[0].src);
+            return false;
+        }) */
+    });
+/* 	$('input[type=ueditorImage]').click(function() {
+		var dialog = _editor.getDialog("insertimage");
+		dialog.open();
+	}); */
+	
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor',{
+		initialFrameHeight: document.getElementById("formCenter").offsetHeight - 150
+	});
+});
+
+</script>
+</body>
+</html>

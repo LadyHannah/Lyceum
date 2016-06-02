@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<#include "common/meta.html">
+<script type="text/javascript" src="${request.contextPath}/js/select.js"></script>
+</head>
+<script type="text/javascript">
+$(function() {
+	var po = ${po.jsonString};
+	
+	//submit
+	$('#reservation_form').form({
+		onSubmit: function() {
+			if ($('input[name=name]').val() == '') {
+				$.messager.alert('提示', '请填写姓名', 'warning');
+				return false;
+			}
+			if ($('#language').combobox('getValue') == 0) {
+				$.messager.alert('提示', '请选择语言!', 'warning');
+				return false;
+			}
+			if ($('input[name=phone]').val() == '') {
+				$.messager.alert('提示', '请填写电话!', 'warning');
+				return false;
+			}
+			var isValid = $(this).form('validate');
+			if (!isValid) {
+				alert("表单验证失败，请检查各输入项是否按照要求填写");
+			}
+			return isValid;
+		},
+		success: function(data) {
+			if (data == 'true') {
+				$.messager.confirm('提示', '保存成功', function(r){
+					if (r){
+						window.location.href='<@url value="/cms/reservation"/>';
+					}
+				});
+			} else {
+				$.messager.alert('提示','保存失败', 'warning', function() {$('#reservation_form').form('reset');});
+			}
+		}
+	}).form('load', po);
+	
+	$('#btn_cancel').click(function() {
+		window.history.back();
+	});
+});
+
+
+</script>
+<body class="easyui-layout">
+<div class="widget-box">
+	<div class="widget-title"><i class="icon-align-justify"></i>
+	<h5><#if po.id??>编辑<#else>新增</#if>预约信息</h5>
+	</div>
+	<form id="reservation_form" action="<@url value='/cms/reservation/edit'/>" method="post">
+	<input type="hidden" name="id">
+	<div class="widget-content nopadding">
+		<div id="p1" class="easyui-panel">
+			<table style="width: 100%;" class="form">
+				<tr>
+					<th><em>*</em>Name</th>
+					<td colspan="3">
+						<input type="text" style="width: 807px;" id="name" name="name"/>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>Language</th>
+					<td colspan="3">
+						<select class="easyui-combobox" id="language" name="language" editable=false style="width: 807px;" >
+              				<option value="0">请选择</option>
+              				<option value="1">国际英语</option>
+              				<option value="2">日语</option>
+              				<option value="3">韩语</option>
+              				<option value="4">德语</option>
+              				<option value="5">法语</option>
+              				<option value="6">意大利语</option>
+              				<option value="7">西班牙语</option>
+            			</select>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>Email</th>
+					<td colspan="3">
+						<input type="text" style="width: 807px;" id="email" name="email">
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>Phone</th>
+					<td colspan="3">
+						<input type="text" style="width: 807px;" id="phone" name="phone">
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em>Message</th>
+					<td colspan="3">
+						<textarea id="message" name="message" style="width: 807px;">${po.message}</textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="form-actions">
+		<button class="btn btn-info" type="submit">Submit</button>
+		<button class="btn btn-info" id="btn_cancel">Cancel</button>
+	</div>
+	</form>
+</div>
+</body>
+</html>
