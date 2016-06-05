@@ -1,16 +1,70 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<title>登录</title>
+<link type="text/css" rel="stylesheet" href="${request.contextPath}/themes/css/login.css">
+<script src="${request.contextPath}/js/jquery-1.12.3.min.js"></script>
 </head>
 <body>
-	<form action="" method="post" id="loginForm">
-		<div class="login-form">
-			<span class="form"> <label>用户名<strong> *</strong></label> <input type="text"  name="j_username"/></span>
-			<span class="form"> <label>密码 <strong>*</strong></label> <input type="password" name="j_password" /></span>
-			<button class="form-button" type="submit">登录</button><a href="${request.contextPath}/col/forgetpass?type=${type}"><p class="forpass">忘记密码？</p></a>
+	<!--top开始-->
+	<div class="top">
+		<!-- <div class="le"></div>
+		<div class="ri"></div>
+		<div class="header">
+			<div class="header-left">
+      		<a href="${request.contextPath}/"><div class="logo"><div class="telgif"><img src="${request.contextPath}/themes/images/telephone_number.gif" width="247" height="47"></div> 
+      			<p>登录</p></div>
+      		</a>
 		</div>
-	</form>
+	</div> -->
+	<div class="header_bg">
+		<div class="header_bg_t">
+			<div class="header_title">吕克昂后台管理系统登录</div>
+		</div>
+	</div>
+	</div>
+	<!--top结束-->
+	<!--mainboby开始-->
+	<div class="mian">
+		<div class="m_title">
+				<h1>管理员登录</h1>
+				<!-- <span>还没账号，<a href="${request.contextPath}/register/gr">立即注册</a></span> -->
+		</div>
+		<form action="<@url value='j_spring_security_check' />" method="post" id="loginForm">
+		<div class="login-form">
+			<span class="form"> <label>用户名<strong> *</strong></label> <input type="text"  name="username"/></span>
+			<span class="form"> <label>密码 <strong>*</strong></label> <input type="password" name="password" /></span>
+			<button class="form-button" type="submit">登录</button>
+			<!-- <a href="${request.contextPath}/col/forgetpass?type=${type}"><p class="forpass">忘记密码？</p></a> -->
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</div>
+		</form>
+		<div style="clear: both"></div>
+	</div>
+	<script type="text/javascript">
+		$('#loginForm').submit(function() {
+			
+			if ($.trim($('input[name=username]').val()) == '') {
+				$('input[name=username]').focus();
+				alert('请输入用户名');
+				return false;
+			}
+			
+			if ($.trim($('input[name=password]').val()) == '') {
+				$('input[name=password]').focus();
+				alert('请输入密码');
+				return false;
+			}
+			return true;
+		});
+		
+		<#if exception??>
+		var message = '${exception}';
+		if ('' != message) {
+			alert(message);
+		}
+		</#if>
+	</script>
 </body>
 </html>

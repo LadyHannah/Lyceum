@@ -11,6 +11,7 @@
 			<span class="nav-cz" url="<@url value='/cms/info'/>">信息管理</span>
 			<span class="nav-cz yes" url="<@url value='/cms/images'/>">图片管理</span>
 			<span class="nav-cz" url="<@url value='/cms/reservation'/>">预约试听</span>
+			<span class="nav-cz" id="logout">退出登录</span>
 		</div>
 	</div>
 	<div data-options="region: 'center'" style="overflow: hidden;">
@@ -22,7 +23,7 @@
 $(function() {
 	$('.shortcut .nav-cz').click(function() {
 		if ($(this).attr('id') == 'logout') {
-			window.location.href = '';
+			window.location.href = '<@url value="/login?logout" />';
 		} else {
 			$('#content').attr('src', $(this).attr('url'));
 			$('.shortcut .nav-cz').removeClass('yes');

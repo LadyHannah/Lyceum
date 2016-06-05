@@ -1,0 +1,307 @@
+/* CSS Document */
+
+/*---------字体-----------*/
+
+p { font-size: 12px; }
+/*=====头部======*/
+
+.top {
+	width: 100%;
+	background: url(../images/dot1.png) center top repeat;
+}
+.top .le, .top .ri { height: 5px; }
+.top .le {
+	float: left;
+	background: #ED565A;
+	width: 46%;
+}
+.top .ri {
+	float: right;
+	background: #FF9900;
+	width: 52%;
+}
+.header {
+	width: 1004px;
+	height: 135px;
+	margin: 0 auto;
+}
+.header-left {
+	width: 100%;
+	height: 115px;
+	float: left;
+}
+.logo {
+	width: 433px;
+	height: 98px;
+	float: left;
+	background: url(../images/logo1.png) no-repeat;
+	margin: 15px 0 0 0;
+	color: #000;
+	font: 24px "微软雅黑";
+}
+.logo p {
+	margin: 7px 0 0 420px;
+	width: 230px;
+	font: 24px "微软雅黑";
+	color: #000;
+}
+.telgif{
+	margin:-10px 0px 0px 0px;
+}
+.header_bg {
+	width: 100%;
+	height: 100px;
+	border-top: 5px solid #FF9900;
+	background: #ED565A;
+	float: left;
+}
+.header_bg_t {
+	width: 1004px;
+	height: 100px;
+	margin: 0 auto;
+	background: url(../images/jiao.png) no-repeat 20px 0px;
+}
+.header_title {
+	font: 24px "微软雅黑";
+	height: 70px;
+	padding: 35px 0px 0px 30px;
+	color: #fff;
+}
+/*---------------注册------------------*/
+.mian {
+	width: 1004px;
+	margin: 0 auto;
+	background: #fff;
+	padding: 20px 0px 40px 0px;
+}
+.m_title {
+	width: 974px;
+	height: 50px;
+	float: left;
+	border-bottom: 2px solid #ddd;
+	margin: 30px 15px 15px 15px;
+}
+.m_title h1 {
+	height: 50px;
+	line-height: 50px;
+	margin: 0px 0px 0px 40px;
+	font: 24px "微软雅黑";
+	font-weight: normal;
+	text-align: center;
+	float: left;
+}
+.hd {
+	width: 974px;
+	height: 50px;
+	float: left;
+	border-bottom: 2px solid #ddd;
+	margin: 30px 15px 15px 15px;
+}
+.hd ul li {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	margin: 0px 0px 0px 40px;
+	font: 24px "微软雅黑";
+	font-weight: normal;
+	text-align: left;
+	float: left;
+	cursor: pointer;
+}
+.hd span {
+	float: right;
+	font: 14px "微软雅黑";
+	padding: 20px 20px 0px 0px;
+}
+.hd .zyz {
+	margin: 0px 0px 0px 20px;
+	color: #999;
+}
+.hd .on {
+	color: #FF9900;
+	border-bottom: 2px solid #FF9900;
+}
+.m_title .yes {
+	color: #FF9900;
+	border-bottom: 2px solid #FF9900;
+}
+.m_title span {
+	float: right;
+	font: 14px "微软雅黑";
+	padding: 20px 20px 0px 0px;
+}
+.m_title span a { color: #4187fb;}
+.hd span a { color: #4187fb;}
+.form-title{
+	font:18px "微软雅黑";
+	width:450px;
+	height:30px;
+	line-height:30px;
+	color:#F90;
+	margin:20px 0px 10px 110px;
+}
+.login-line{
+	float:right; width:360px; display:block;height:15px; border-bottom:1px dotted #ddd;
+}
+.m_title .zyz {
+	margin: 0px 0px 0px 40px;
+	color: #999;
+}
+.login-form {
+	width: 810px;
+	font: 16px "微软雅黑";
+	color: #666;
+	margin-left: 200px;
+}
+.login-form, .login-form label, .login-form input, .form, .form p, .form-button, .form-btn input, .forget-f input, .button-f { float: left; }
+.login-form label {
+	width: 117px;
+	padding: 0px 10px;
+	text-align: right;
+}
+.forms {
+	margin: 10px 0px;
+	float: left;
+}
+.login-form label strong {
+	color: #F00;
+	font-size: 10px;
+	font-weight: normal;
+}
+.form {
+	width: 905px;
+	padding: 10px 0;
+}
+.form img {
+	width: 110px;
+	height: 35px;
+	float: left;
+	margin: 0 0 0 10px;
+}
+.form b{
+	width: 100px;
+	float: left;
+	cursor: pointer;
+	color: #4187fb;
+	font-weight: normal;
+	font-size: 12px;
+	margin: 20px 0 0 10px;
+}
+.form p {
+	width: 700px;
+	padding: 5px 0 0 0;
+	margin-left: 137px;
+}
+.login-form input, .forget-f input, input[type="radio"], input[type="checkbox"] {
+	border: 1px #ddd solid;
+	margin: 0px 0px 0px 0px;
+	height: 18px;
+	line-height: 18px;
+}
+input[type="radio"], input[type="checkbox"] {
+	vertical-align: middle;
+	float: none;
+	padding: 0px;
+	width: 18px !important;
+	margin: 0px 10px 0px 0px;
+}
+.login-form input, .forget-f input {
+	width: 300px;
+	height: 18px;
+	line-height: 18px;
+	padding: 7px;
+	outline: none;
+}
+.verify { width: 180px!important; }
+.login-form input:hover, .forget-f input:hover { border: 1px #ED565A solid; }
+.form-btn input, .button-f, .form-button{
+	width: 320px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	margin: 15px 0px 15px 137px;
+	color: #FFF;
+	font: 20px "微软雅黑";
+	line-height: 50px;
+	padding: 0px;
+
+	border-radius: 5px;
+	background: #D81718;
+}
+.form-button:hover, .button-f:hover, .form-btn input:hover {
+	
+ }
+.button-f {
+	margin: 0px 0 100px 410px;
+	float: left;
+}
+.forget-form p {
+	font: 18px "微软雅黑";
+	width: 210px;
+	margin-top:5px;
+	float: left;
+}
+.forget {
+	display: block;
+	width: 410px;
+	text-align: right;
+	cursor: pointer;
+	color: #000;
+	font-size: 18px;
+	padding: 0px;
+}
+.forget:hover { color: #Ff9900; }
+.forget-form {
+	width: 600px;
+	font: 16px "微软雅黑";
+	color: #666;
+	float: left;
+	line-height:40px;
+	margin: 30px 0 20px 200px;
+}
+.forget-f input {
+	width: 400px;
+	float: left;
+}
+.button-f {
+	margin: 0px 0 100px 410px;
+	float: left;
+}
+.forget-form span {
+	margin: 0px 0px;
+	float: left;
+}
+.forpass {
+	width: 100px;
+	float: left;
+	margin: 36px 0 0 68px;
+	cursor: pointer;
+	color: #4187fb;
+}
+.null, .focus, .error {
+	width: 302px;
+	float:left;
+	font-size: 12px;
+	height: 22px;
+	line-height: 22px;
+	margin: 0 0 0 10px;
+	position: absolute;
+	top: 33px;
+	left: 0;
+}
+.error {
+	color: #ED565A;
+}
+.mian .highlight2 {
+	border: 1px solid #ED565A;
+	outline: 1px solid  #ED565A;
+	color:  #ED565A;
+}
+.mian form {
+	float: left;
+}
+#registsubmit.disabled {
+	background: #ED565A !important;
+	cursor: default!important;
+	
+}
