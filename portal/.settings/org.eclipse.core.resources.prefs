@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//db/init.sql=UTF-8
+encoding//src/main/java=UTF-8
 encoding//src/main/java/com/lyceum/cms/application/ColumnInfoApplication.java=UTF-8
 encoding//src/main/java/com/lyceum/cms/application/InformationApplication.java=UTF-8
 encoding//src/main/java/com/lyceum/cms/core/ColumnInfo.java=UTF-8
@@ -13,6 +14,9 @@ encoding//src/main/java/com/lyceum/cms/web/ftls/images/edit.html=UTF-8
 encoding//src/main/java/com/lyceum/cms/web/ftls/index.html=UTF-8
 encoding//src/main/java/com/lyceum/cms/web/ftls/info/edit.html=UTF-8
 encoding//src/main/java/com/lyceum/cms/web/ftls/reservation/edit.html=UTF-8
+encoding//src/main/resources=UTF-8
 encoding//src/main/resources/common=UTF-8
 encoding//src/main/resources/common/head.html=UTF-8
 encoding//src/main/webapp/static/themes/css/login.css=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

@@ -20,7 +20,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * ��蝞∠��撅�
+ * ColumInfoController
  * @author Hannah
  *
  */
@@ -32,7 +32,7 @@ public class ColumnInfoController extends FreeMarkerController {
 	private ColumnInfoApplication columnInfoApplication;
 	
 	/**
-	 * 銝��
+	 * Column index page
 	 */
 	@Override
 	@RequestMapping("")
@@ -42,7 +42,7 @@ public class ColumnInfoController extends FreeMarkerController {
 	}
 	
 	/**
-	 * ���敶�
+	 * Find column tree
 	 * @param parentId
 	 * @param name
 	 * @param pagingObject
@@ -102,7 +102,7 @@ public class ColumnInfoController extends FreeMarkerController {
 	}
 	
 	/**
-	 * 餈�敶��△�
+	 * Edit columnInfo
 	 * @param id
 	 * @param map
 	 * @return
@@ -125,7 +125,7 @@ public class ColumnInfoController extends FreeMarkerController {
 	}
 	
 	/**
-	 * 靽�敶縑�
+	 * Save or update
 	 * @param vo
 	 * @return
 	 */
@@ -139,7 +139,7 @@ public class ColumnInfoController extends FreeMarkerController {
 	}
 	
 	/**
-	 * ���敶縑�
+	 * Delete Column
 	 * @param ids
 	 * @return
 	 */
