@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//db/init.sql=UTF-8
+encoding//src/main/java/com/lyceum/cms/application/ColumnInfoApplication.java=UTF-8
 encoding//src/main/java/com/lyceum/cms/application/InformationApplication.java=UTF-8
 encoding//src/main/java/com/lyceum/cms/core/ColumnInfo.java=UTF-8
 encoding//src/main/java/com/lyceum/cms/core/ColumnInformationLink.java=UTF-8
