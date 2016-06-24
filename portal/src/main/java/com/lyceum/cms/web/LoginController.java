@@ -19,10 +19,13 @@ public class LoginController extends FreeMarkerController{
 		return null;
 	}
 	
-	//新增加的Action方法，映射到
-    // 1. /login 登录页面的常规显示
-    // 2. /login?error 登录验证失败的展示
-    // 3. /login?logout 注销登录的处理
+	/**
+	 * login verification
+	 * @param map
+	 * @param error
+	 * @param logout
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage(ModelMap map,
 			@RequestParam(value = "error", required = false) String error,
@@ -38,10 +41,9 @@ public class LoginController extends FreeMarkerController{
 		return getViewName("ftls/login");
 	}
 
-    //新增加的Action方法，映射到
-    // 1. /login 登录页面的常规显示
-    // 2. /login?error 登录验证失败的展示
-    // 3. /login?logout 注销登录的处理
+	/**
+	 * login error & logout
+	 */
 /*    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(
             @RequestParam(value = "error", required = false) String error,

@@ -30,7 +30,7 @@ public class IndexController extends FreeMarkerController{
 	@RequestMapping("")
 	public String index(HttpServletRequest request, ModelMap params) {
 		log.info("Enter Home Page");
-		//分页
+		//Paging
 		PagingObject paging = new PagingObject();
 		int curPage = StringUtil.parseInt(request.getParameter("currentPage"), 1);
 		if (curPage < 1) { curPage = 1; }
@@ -38,33 +38,29 @@ public class IndexController extends FreeMarkerController{
 		paging.setCurPage(curPage);
 		paging.setPerPageRow(8);
 		
-		//栏目说明
 		ColumnInfo gjyy = DAOUtil.getByKey(ColumnInfo.class, "gjyy");
-		params.put("gjyy_sub", gjyy.getDescription()); //国际英语
+		params.put("gjyy_sub", gjyy.getDescription()); 
 		ColumnInfo xyz = DAOUtil.getByKey(ColumnInfo.class, "xyz");
-		params.put("xyz_sub", xyz.getDescription()); //小语种
+		params.put("xyz_sub", xyz.getDescription()); 
 		ColumnInfo tdjs = DAOUtil.getByKey(ColumnInfo.class, "tdjs");
-		params.put("tdjs_sub", tdjs.getDescription()); //团队介绍
+		params.put("tdjs_sub", tdjs.getDescription()); 
 		ColumnInfo zsal = DAOUtil.getByKey(ColumnInfo.class, "zsal");
-		params.put("zsal_sub", zsal.getDescription()); //真实案例
-		
-		//国际英语两小模块
+		params.put("zsal_sub", zsal.getDescription()); 
 		
 		paging.setPerPageRow(2);
 		ColumnInfo sy = DAOUtil.getByKey(ColumnInfo.class, "sy");
 		List<ColumnInformationLink> article = ColumnInformationLink.find(sy.getId(), paging);
 		params.put("article", article);
 		
-		//首页图片
 		paging.setPerPageRow(5);
-		List<Images> imagesList = Images.findListByName("首页", null, paging);
+		List<Images> imagesList = Images.findListByName("棣栭〉", null, paging);
 		params.put("imagesList", imagesList);
 		
 		return getViewName("index");
 	}
 	
 	/**
-	 * 跳转二级页面
+	 * Seconde page
 	 * @param key
 	 * @param request
 	 * @param paging
@@ -73,20 +69,16 @@ public class IndexController extends FreeMarkerController{
 	 */
 	@RequestMapping("col/{key}")
 	public String col(@PathVariable String key, HttpServletRequest request, PagingObject paging, ModelMap map) {
-		//跳转到二级页面
 		map.put("colKey", key.trim());
-		//将传递过来的key转换为可以查询的key
 		key = key.trim().replaceAll("-", "/");
-		//判断导航的样式,为栏目标签的key赋值
 		map.put("columnKey", key);
-		//分页
+		//paging
 		int curPage = StringUtil.parseInt(request.getParameter("currentPage"), 1);
 		if (curPage < 1) { curPage = 1; }
 		map.put("curPage", curPage);
 		paging.setCurPage(curPage);
 		paging.setPerPageRow(8);
 		
-		//国际英语
 		if (key.startsWith("gjyy")) {
 			return getViewName("info/english");
 		}
