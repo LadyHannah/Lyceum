@@ -3,6 +3,7 @@ package com.lyceum.cms.web;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import net.sf.json.JSONObject;
  */
 @Controller
 @RequestMapping("cms/column")
+//@EnableWebSecurity
 public class ColumnInfoController extends FreeMarkerController {
 
 	@Autowired

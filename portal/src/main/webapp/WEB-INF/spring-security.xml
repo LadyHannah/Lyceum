@@ -7,13 +7,19 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http auto-config="true">
+		<!-- <intercept-url pattern="/cms/column/*" access="IS_AUTHENTICATED_ANONYMOUSLY,IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED"/> -->
 		<intercept-url pattern="/cms*" access="ROLE_USER" />
 		<intercept-url pattern="/cms/*" access="ROLE_USER" />
 		<intercept-url pattern="/cms/**/*" access="ROLE_USER" />
 		<form-login login-page="/login" default-target-url="/cms" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password" />
-         <logout logout-success-url="/login?logout" />
-         <!-- enable csrf protection -->
-         <csrf />
+        <logout logout-success-url="/login?logout" />
+        <!-- enable csrf protection -->
+        <!-- <csrf /> -->
+         
+       	<session-management session-fixation-protection="migrateSession">
+			<concurrency-control max-sessions="1" expired-url="/login?logout" />
+		</session-management>
+         
 	</http>
 
 	<authentication-manager>
