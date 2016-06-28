@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<#include "common/meta.html">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="${request.contextPath}/js/include-web.js"></script>
+<script type="text/javascript" src="${request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
+<link type="text/css" href="${request.contextPath}/js/My97DatePicker/skin/WdatePicker.css"> 
 </head>
 <script type="text/javascript">
 $(function() {
 	var po = ${po.jsonString};
-	//保存
+	//ä¿�å­˜
 	$('#column_form').form({
 		onSubmit: function() {
 			if ($('input[name=name]').val() == '') {
-				$.messager.alert('提示', '请填写目录名称!', 'warning');
+				$.messager.alert('æ��ç¤º', 'è¯·å¡«å†™ç›®å½•å��ç§°!', 'warning');
 				return false;
 			}
 			if ($('input[name=key]').val() == '') {
-				$.messager.alert('提示', '请填写英文名称!', 'warning');
+				$.messager.alert('æ��ç¤º', 'è¯·å¡«å†™è‹±æ–‡å��ç§°!', 'warning');
 				return false;
 			}
 			var isValid = $(this).form('validate');
 			if (!isValid) {
-				alert("表单验证失败，请检查各输入项是否按照要求填写");
+				alert("è¡¨å�•éªŒè¯�å¤±è´¥ï¼Œè¯·æ£€æŸ¥å�„è¾“å…¥é¡¹æ˜¯å�¦æŒ‰ç…§è¦�æ±‚å¡«å†™");
 			}
 			return isValid;
 		},
 		success: function(data) {
-			$.messager.confirm('提示', '保存成功', function(r){
+			$.messager.confirm('æ��ç¤º', 'ä¿�å­˜æˆ�åŠŸ', function(r){
 				if (r){
 					window.location.href='<@url value="/cms/column?parentId=${po.parentId}"/>';
 				} else {
@@ -43,7 +48,7 @@ $(function() {
 </script>
 <body class="easyui-layout">
 <div class="widget-box">
-	<div class="widget-title"><i class="icon-align-justify"></i><h5>新增目录</h5></div>
+	<div class="widget-title"><i class="icon-align-justify"></i><h5>æ–°å¢žç›®å½•</h5></div>
 	<form id="column_form" action="<@url value='/cms/column/edit'/>" method="post">
 	<input type="hidden" name="id">
 	<input type="hidden" name="parentId" value="${parentId}">
@@ -51,51 +56,51 @@ $(function() {
 		<div id="p1" class="easyui-panel">
 			<table style="width: 100%;" class="form">
 				<tr>
-					<th><em>*</em>目录名称</th>
+					<th><em>*</em>ç›®å½•å��ç§°</th>
 					<td>
 						<input type="text" style="width: 200px;" id="name" name="name"/>
 					</td>
-					<th><em>*</em>英文名称</th>
+					<th><em>*</em>è‹±æ–‡å��ç§°</th>
 					<td>
 						<input type="text" style="width: 200px;" id="key" name="key"/>
 					</td>
 				</tr>
 				<tr>
-					<th><em></em>排序</th>
+					<th><em></em>æŽ’åº�</th>
 					<td>
 						<input type="text" style="width: 200px;" id="orderIndex" name="orderIndex"/>
 					</td>
-					<th><em></em>属性</th>
+					<th><em></em>å±žæ€§</th>
 					<td>
-						<input type="radio" class="type" name="type" value="0"/>多篇信息
-						<input type="radio" class="type" name="type" value="1"/>单篇信息
-						<input type="radio" class="type" name="type"value="2"/>不可发布信息
+						<input type="radio" class="type" name="type" value="0"/>å¤šç¯‡ä¿¡æ�¯
+						<input type="radio" class="type" name="type" value="1"/>å�•ç¯‡ä¿¡æ�¯
+						<input type="radio" class="type" name="type"value="2"/>ä¸�å�¯å�‘å¸ƒä¿¡æ�¯
 					</td>
 				</tr>
 				<tr>
-					<th><em></em>说明</th>
+					<th><em></em>è¯´æ˜Ž</th>
 					<td colspan="3">
 						<textarea style="width: 807px;" rows="3" id="description" name="description"></textarea>
 					</td>
 				</tr>
 				<!-- 
 				<tr>
-					<th><em></em>配图</th>
+					<th><em></em>é…�å›¾</th>
 					<td>
 						<input type="text" style="width: 200px;" id="imageUrl" name="imageUrl"/>
 					</td>
-					<th><em></em>模板类型</th>
+					<th><em></em>æ¨¡æ�¿ç±»åž‹</th>
 					<td>
 						<input type="text" style="width: 200px;" id="template" name="template"/>
 					</td>
 					
 				</tr>
 				<tr>
-					<th><em></em>授权</th>
+					<th><em></em>æŽˆæ�ƒ</th>
 					<td colspan="3">
-						部门<input type="text" style="width: 200px;" id="dept" name="dept"/><br/>
-						岗位<input type="text" style="width: 200px;" id="position" name="position"/><br/>
-						用户<input type="text" style="width: 200px;" id="user" name="user"/>
+						éƒ¨é—¨<input type="text" style="width: 200px;" id="dept" name="dept"/><br/>
+						å²—ä½�<input type="text" style="width: 200px;" id="position" name="position"/><br/>
+						ç”¨æˆ·<input type="text" style="width: 200px;" id="user" name="user"/>
 					</td>
 				</tr>
 				 -->
@@ -103,8 +108,8 @@ $(function() {
 		</div>
 	</div>
 	<div class="form-actions">
-		<button class="btn btn-info" type="submit">保 存</button>
-		<button class="btn btn-info" id="btn_cancel">取 消</button>
+		<button class="btn btn-info" type="submit">ä¿� å­˜</button>
+		<button class="btn btn-info" id="btn_cancel">å�– æ¶ˆ</button>
 	</div>
 	</form>
 </div>

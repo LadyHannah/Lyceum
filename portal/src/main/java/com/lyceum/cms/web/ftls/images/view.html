@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<#include "common/meta.html">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="${request.contextPath}/js/include-web.js"></script>
+<script type="text/javascript" src="${request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
+<link type="text/css" href="${request.contextPath}/js/My97DatePicker/skin/WdatePicker.css"> 
 </head>
 <script type="text/javascript">
 $(function() {
@@ -17,36 +22,36 @@ $(function() {
 <body class="easyui-layout">
 <div class="widget-box">
 	<div class="widget-title"><i class="icon-align-justify"></i>
-	<h5>查看图片信息</h5>
+	<h5>æŸ¥çœ‹å›¾ç‰‡ä¿¡æ�¯</h5>
 	</div>
 	<div class="widget-content nopadding">
 		<div id="p1" class="easyui-panel">
 			<table style="width: 100%;" class="form">
 				<tr>
-					<th><em>*</em>标题</th>
+					<th><em>*</em>æ ‡é¢˜</th>
 					<td colspan="3">${po.title}</td>
 				</tr>
 				<tr>
-					<th><em>*</em>所属目录</th>
+					<th><em>*</em>æ‰€å±žç›®å½•</th>
 					<td colspan="3">${po.parentTitle}</td>
 				</tr>
 				<tr>
-					<th><em>*</em>图片地址</th>
+					<th><em>*</em>å›¾ç‰‡åœ°å�€</th>
 					<td colspan="3">${po.imgUrl}</td>
 				</tr>
 				<tr>
-					<th><em>*</em>英文名称</th>
+					<th><em>*</em>è‹±æ–‡å��ç§°</th>
 					<td colspan="3">${po.titleKey}</td>
 				</tr>
 				<tr>
-					<th><em></em>排序号</th>
+					<th><em></em>æŽ’åº�å�·</th>
 					<td colspan="3">${po.orderIndex}</td>
 				</tr>
 			</table>
 		</div>
 	</div>
 	<div class="form-actions">
-		<button class="btn btn-info" id="btn_cancel">返回</button>
+		<button class="btn btn-info" id="btn_cancel">è¿”å›ž</button>
 	</div>
 </div>
 </body>
