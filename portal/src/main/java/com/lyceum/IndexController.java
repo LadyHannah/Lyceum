@@ -39,16 +39,16 @@ public class IndexController extends FreeMarkerController{
 		paging.setPerPageRow(8);
 		
 		ColumnInfo gjyy = DAOUtil.getByKey(ColumnInfo.class, "gjyy");
-		params.put("gjyy_sub", gjyy.getDescription()); 
+		params.put("gjyy", gjyy); //国际英语
 		ColumnInfo xyz = DAOUtil.getByKey(ColumnInfo.class, "xyz");
-		params.put("xyz_sub", xyz.getDescription()); 
+		params.put("xyz", xyz); //小语种
 		ColumnInfo tdjs = DAOUtil.getByKey(ColumnInfo.class, "tdjs");
-		params.put("tdjs_sub", tdjs.getDescription()); 
+		params.put("tdjs", tdjs); //团队介绍
 		ColumnInfo zsal = DAOUtil.getByKey(ColumnInfo.class, "zsal");
-		params.put("zsal_sub", zsal.getDescription()); 
+		params.put("zsal", zsal); //真实案例
 		
 		paging.setPerPageRow(2);
-		ColumnInfo sy = DAOUtil.getByKey(ColumnInfo.class, "sy");
+		ColumnInfo sy = DAOUtil.getByKey(ColumnInfo.class, "gjyy");
 		List<ColumnInformationLink> article = ColumnInformationLink.find(sy.getId(), paging);
 		params.put("article", article);
 		

@@ -73,6 +73,8 @@
     		<#else>
 		      	<img src="${request.contextPath}/themes/images/head-bg.jpg">
     		</#if>
+    		
+    		<img src="${request.contextPath}/themes/images/head-bg.jpg">
 		    </div>
 		  </div>
 		  <div class="Lyceum">
@@ -89,7 +91,7 @@
 		<div class="container">
 			<h2>国际英语</h2>
 			<h3>Internation English</h3>
-			<p>${gjyy_sub}</p>
+			<p>${gjyy.description}</p>
 			<#if article??>
 				<#list article as art>
 			<div class="row">
@@ -131,7 +133,7 @@
 		<div class="container">
 			<h2>小语种</h2>
 			<h3>异邦言&nbsp;&&nbsp;欧亚语塾</h3>
-			<p>${xyz_sub}</p>
+			<p>${xyz.description}</p>
 			<div class="row">
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-japanese'/>" target="_blank">
@@ -172,7 +174,7 @@
 		<div class="container">
 			<h2>团队介绍</h2>
 			<h3>国际英语&欧亚语塾&nbsp;&nbsp;核心教研团队</h3>
-			<p>${tdjs_sub}</p>
+			<p>${tdjs.description}</p>
 			<!-- <p>吕克昂国际教育集合了各地的优秀教师，形成了多元的教研团队，沉浸教学界多年的学院派，初出茅庐的年轻学霸，以及在留中国的多年外教,兼而有之，但有一点他们是共同的，中教师均持专业业内权威证书，专职外教具有三年以上教学经验与资源，因此可以说，吕克昂国际教育教研团队的专业化精，细化程度，业界难出其右，以下几位老师为吕克昂教研核心团队，为尊重个人隐私兼职教师暂不列出。</p> -->
 			<div class="intro">
 				<img src="${request.contextPath}/themes/images/team_01.jpg" alt="">
@@ -183,7 +185,7 @@
 		<div class="container">
 			<h2>真实案例</h2>
 			<h3>CASES</h3>
-			<p>${zsal_sub}</p>
+			<p>${zsal.description}</p>
 			<!-- <p>近几年部分学生案例，保证100%的真实性，但见一丝造假，接受任何诅咒，培训行无本坊之名。另外，案例描述中，</br>我们也为大家传达本坊一些重要的理念，方便大家客观的看待所谓的案例。</p> -->
 			<div class="real">
 				<img src="${request.contextPath}/themes/images/real.jpg">
@@ -238,6 +240,9 @@
 				<img src="${request.contextPath}/themes/images/join-us.jpg" alt="">
 			</div>
 		</div>
+	</div>
+	<div style="width:400px;margin:0 auto; padding:20px 0;" >
+		<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙ICP备14000288号-1</p>
 	</div>
 	<script src="${request.contextPath}/js/select.js"></script>
 	<script type="text/javascript">
