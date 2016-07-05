@@ -120,8 +120,7 @@ public class ImagesController extends FreeMarkerController {
             
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(new File(filePath+path)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath+path)));
                 stream.write(bytes);
                 stream.close();
             } catch (Exception e) {

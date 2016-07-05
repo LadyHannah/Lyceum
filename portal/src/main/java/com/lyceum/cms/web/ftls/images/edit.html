@@ -19,10 +19,10 @@ $(function() {
 				$.messager.alert('提示', '请填写标题!', 'warning');
 				return false;
 			}
-			if ($('input[name=imgUrl]').val() == '') {
+		/* 	if ($('input[name=imgUrl]').val() == '') {
 				$.messager.alert('提示', '图片地址为空,请上传图片!', 'warning');
 				return false;
-			}
+			} */
 			if ($('input[name=titleKey]').val() == '') {
 				$.messager.alert('提示', '请填写英文名称!', 'warning');
 				return false;
@@ -78,7 +78,7 @@ $(function() {
 				<tr>
 					<th><em>*</em>图片地址</th>
 					<td colspan="3">
-						<input type="text" style="width: 250px;" id="imgUrl" value="${po.imgUrl}" disabled="disabled">
+						<input type="text" style="width: 250px;" id="imgUrl" name="imgUrl" value="${po.imgUrl}" disabled="disabled">
 						<input type="file" style="width: 235px;" name="file"/>
 						<!-- <input type="text" style="width: 500px;" id="imgUrl" name="imgUrl">
 						<button class="btn btn-info" id="uploadImage">上传</button> -->
