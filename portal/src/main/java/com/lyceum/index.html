@@ -67,14 +67,12 @@
 		    <#if imagesList??>
     			<#list imagesList as img>
     				<#if img.titleKey == 'jdt'>
-    			<img src="<@url value='/cms/images/show?imgUrl=${img.imgUrl}'/>">
+    			<img src="<@url value='/showImage?imgUrl=${img.imgUrl}'/>">
     				</#if>
     			</#list>
     		<#else>
 		      	<img src="${request.contextPath}/themes/images/head-bg.jpg">
     		</#if>
-    		
-    		<img src="${request.contextPath}/themes/images/head-bg.jpg">
 		    </div>
 		  </div>
 		  <div class="Lyceum">

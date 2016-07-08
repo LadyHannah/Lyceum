@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +29,7 @@ import com.zealyo.jdbc.util.PagingObject;
 import net.sf.json.JSONObject;
 
 /**
- * Images controller
+ * CMS Images controller
  * @author Hannah
  *
  */
@@ -38,8 +37,6 @@ import net.sf.json.JSONObject;
 @RequestMapping("cms/images")
 public class ImagesController extends FreeMarkerController {
 
-	@Value("#{settings['filePath']}")
-	private String filePath;
 	@Autowired
 	private ImagesApplication imagesApplication;
 	
@@ -117,8 +114,7 @@ public class ImagesController extends FreeMarkerController {
             //新的图片文件名 = 获取时间戳+"."图片扩展名
             path = imagesApplication.getRandomFileName() + "." + extensionName;
             //获取当前服务器地址
-            realpath = this.getClass().getResource("/common").getPath();
-            
+        	realpath = this.getClass().getResource("/common").getPath();
             try {
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(realpath + path)));
@@ -158,8 +154,10 @@ public class ImagesController extends FreeMarkerController {
         response.setContentType("image/*");
         FileInputStream fis = null; 
         OutputStream os = null; 
+        //获取当前服务器地址
+    	String realpath = this.getClass().getResource("/common").getPath();
         try {
-        	fis = new FileInputStream(filePath+imgUrl);
+        	fis = new FileInputStream(realpath + imgUrl);
         	os = response.getOutputStream();
             int count = 0;
             int i = fis.available();

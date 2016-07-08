@@ -1,8 +1,12 @@
 package com.lyceum;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lyceum.cms.core.ColumnInfo;
 import com.lyceum.cms.core.ColumnInformationLink;
@@ -108,5 +113,42 @@ public class IndexController extends FreeMarkerController{
 		}
 		return getViewName("info/english");
 	}
+	
+	/**
+	 * 读取图片
+	 * @param request
+	 * @param response
+	 * @param imgUrl  图片路径(a.jpg)
+	 */
+	@RequestMapping("/showImage")
+    @ResponseBody
+    public void showImage(HttpServletRequest request, HttpServletResponse response, String imgUrl){
+    	//response.setContentType("text/html; charset=UTF-8");
+        response.setContentType("image/*");
+        FileInputStream fis = null; 
+        OutputStream os = null; 
+        //获取当前服务器地址
+    	String realpath = this.getClass().getResource("/common").getPath();
+        try {
+        	fis = new FileInputStream(realpath + imgUrl);
+        	os = response.getOutputStream();
+            int count = 0;
+            int i = fis.available();
+            byte[] buffer = new byte[i];
+            while ( (count = fis.read(buffer)) != -1 ){
+            	os.write(buffer, 0, count);
+            	os.flush();
+            }
+        }catch(Exception e){
+        	e.printStackTrace();
+        }finally {
+            try {
+				fis.close();
+				os.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        }
+    }
 	
 }
