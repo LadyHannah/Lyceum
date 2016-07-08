@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -108,22 +107,25 @@ public class ImagesController extends FreeMarkerController {
 	@ResponseBody
 	public boolean edit(Images po ,@RequestParam(value="file",required=false) MultipartFile file,
             HttpServletRequest request) throws Exception{
-        String path="";
-        if(!file.isEmpty()){
-            //生成uuid作为文件名称
-            String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        String path = "";
+        String realpath = "";
+        if (!file.isEmpty()) {
             //获得文件类型（可以判断如果不是图片，禁止上传）
-            String contentType=file.getContentType();
+            String contentType = file.getContentType();
             //获得文件后缀名称
-            String extensionName=contentType.substring(contentType.indexOf("/")+1);
-            path=uuid+"."+extensionName;
+            String extensionName = contentType.substring(contentType.indexOf("/")+1);
+            //新的图片文件名 = 获取时间戳+"."图片扩展名
+            path = imagesApplication.getRandomFileName() + "." + extensionName;
+            //获取当前服务器地址
+            realpath = this.getClass().getResource("/common").getPath();
             
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath+path)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(realpath + path)));
                 stream.write(bytes);
                 stream.close();
             } catch (Exception e) {
+            	System.out.println(e.getMessage());
             	e.getMessage();
                 return false;
             }
