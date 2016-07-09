@@ -42,9 +42,9 @@ public class ImagesApplication {
 		for (String id : StringUtil.split(ids, ",")) {
 			po = Images.get(id);
 			if (null != po) {
-				String realPath = this.getClass().getResource("/common").getPath();
+				String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
 				//构建文件目录 
-		        File fileDir = new File(realPath+ po.getImgUrl());
+		        File fileDir = new File(envVar+ po.getImgUrl());
 		        if (fileDir.exists()) {
 		            //把之前的图片删除 以免太多没用的图片占据空间
 		            fileDir.delete();
