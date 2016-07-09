@@ -128,9 +128,9 @@ public class IndexController extends FreeMarkerController{
         FileInputStream fis = null; 
         OutputStream os = null; 
         //获取当前服务器地址
-    	String realpath = this.getClass().getResource("/common").getPath();
+    	String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
         try {
-        	fis = new FileInputStream(realpath + imgUrl);
+        	fis = new FileInputStream(envVar + imgUrl);
         	os = response.getOutputStream();
             int count = 0;
             int i = fis.available();

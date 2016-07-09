@@ -105,7 +105,7 @@ public class ImagesController extends FreeMarkerController {
 	public boolean edit(Images po ,@RequestParam(value="file",required=false) MultipartFile file,
             HttpServletRequest request) throws Exception{
         String path = "";
-        String realpath = "";
+        String envVar = "";
         if (!file.isEmpty()) {
             //获得文件类型（可以判断如果不是图片，禁止上传）
             String contentType = file.getContentType();
@@ -114,10 +114,10 @@ public class ImagesController extends FreeMarkerController {
             //新的图片文件名 = 获取时间戳+"."图片扩展名
             path = imagesApplication.getRandomFileName() + "." + extensionName;
             //获取当前服务器地址
-        	realpath = this.getClass().getResource("/common").getPath();
+            envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(realpath + path)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(envVar + path)));
                 stream.write(bytes);
                 stream.close();
             } catch (Exception e) {
@@ -155,9 +155,9 @@ public class ImagesController extends FreeMarkerController {
         FileInputStream fis = null; 
         OutputStream os = null; 
         //获取当前服务器地址
-    	String realpath = this.getClass().getResource("/common").getPath();
+    	String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
         try {
-        	fis = new FileInputStream(realpath + imgUrl);
+        	fis = new FileInputStream(envVar + imgUrl);
         	os = response.getOutputStream();
             int count = 0;
             int i = fis.available();
