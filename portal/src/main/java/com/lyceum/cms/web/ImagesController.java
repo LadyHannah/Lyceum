@@ -2,14 +2,10 @@ package com.lyceum.cms.web;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -114,7 +110,8 @@ public class ImagesController extends FreeMarkerController {
             //新的图片文件名 = 获取时间戳+"."图片扩展名
             path = imagesApplication.getRandomFileName() + "." + extensionName;
             //获取当前服务器地址
-            envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
+            envVar = this.getClass().getResource("/common").getPath();   //Local environment
+        	//envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";  //server environment
             try {
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(envVar + path)));
@@ -141,40 +138,4 @@ public class ImagesController extends FreeMarkerController {
 		return String.valueOf(imagesApplication.delete(ids));
 	}
 	
-	/**
-	 * 读取图片
-	 * @param request
-	 * @param response
-	 * @param imgUrl  图片路径(a.jpg)
-	 */
-	@RequestMapping("/show")
-    @ResponseBody
-    public void showImage(HttpServletRequest request, HttpServletResponse response, String imgUrl){
-    	//response.setContentType("text/html; charset=UTF-8");
-        response.setContentType("image/*");
-        FileInputStream fis = null; 
-        OutputStream os = null; 
-        //获取当前服务器地址
-    	String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
-        try {
-        	fis = new FileInputStream(envVar + imgUrl);
-        	os = response.getOutputStream();
-            int count = 0;
-            int i = fis.available();
-            byte[] buffer = new byte[i];
-            while ( (count = fis.read(buffer)) != -1 ){
-            	os.write(buffer, 0, count);
-            	os.flush();
-            }
-        }catch(Exception e){
-        	e.printStackTrace();
-        }finally {
-            try {
-				fis.close();
-				os.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        }
-    }
 }

@@ -42,7 +42,8 @@ public class ImagesApplication {
 		for (String id : StringUtil.split(ids, ",")) {
 			po = Images.get(id);
 			if (null != po) {
-				String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";
+		        String envVar = this.getClass().getResource("/common").getPath();   //Local environment
+		    	//String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";  //server environment
 				//构建文件目录 
 		        File fileDir = new File(envVar+ po.getImgUrl());
 		        if (fileDir.exists()) {
