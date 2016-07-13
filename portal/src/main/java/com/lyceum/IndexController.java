@@ -58,7 +58,7 @@ public class IndexController extends FreeMarkerController{
 		params.put("article", article);
 		
 		paging.setPerPageRow(5);
-		List<Images> imagesList = Images.findListByName("首页", null, paging);
+		List<Images> imagesList = Images.findList("首页", null, paging);
 		params.put("imagesList", imagesList);
 		
 		return getViewName("index");

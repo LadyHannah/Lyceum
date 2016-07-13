@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.zealyo.common.annotation.CName;
@@ -25,12 +29,13 @@ import com.zealyo.jdbc.util.PagingObject;
 @Table(name = "CMS_IMAGES")
 public class Images extends PO {
 
-	private static final long serialVersionUID = -7926015978443790870L;
+	private static final long serialVersionUID = 1294141367901708057L;
 
-	@CName("Parent Title")
-	@Column(name = "PARENT_TITLE", length = 20)
-	@JsonProperty private String parentTitle;
-	
+	@CName("Images Column")
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+	@JoinColumn(name = "IMAGES_COLUMN_ID")
+	@JsonProperty(type = "vo") private ImagesColumn imagesColumn;
+
 	@CName("Title")
 	@Column(name = "TITLE_", length = 20)
 	@JsonProperty private String title;
@@ -39,13 +44,9 @@ public class Images extends PO {
 	@Column(name = "IMG_URL")
 	@JsonProperty private String imgUrl;
 	
-	
-	@Column(name = "TITLE_KEY", length = 100)
-	@JsonProperty private String titleKey;
-	
-	@CName("orderIndex")
-	@Column(name = "ORDER_INDEX", length = 6)
-	@JsonProperty private float orderIndex = 1000f;
+	@CName("Image Number")
+	@Column(name = "IMG_NUMBER", length = 10)
+	@JsonProperty private String imgNumber;
 	
 	public static Images get(String id) {
 		return DAOUtil.get(Images.class, id);
@@ -53,67 +54,67 @@ public class Images extends PO {
 
 	/**
 	 * Find GridResult<Images>
-	 * @param parentTitle
-	 * @param titleKey
+	 * @param title
+	 * @param imagesColumnId
 	 * @param pagingObject
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static GridResult<Images> findGridResultByName(String parentTitle, String titleKey, PagingObject pagingObject) {
+	public static GridResult<Images> findGridResultByName(String title, String imagesColumnId, PagingObject pagingObject) {
 		StringBuilder query = new StringBuilder(" from ").append(Images.class.getName()).append(" po where 1 = 1");
 		Map<String, Object> params = new HashMap<String, Object>();
-		if (!StringUtil.isNullOrEmpty(parentTitle)) {
-			query.append(" and po.parentTitle like :parentTitle");
-			params.put("parentTitle", "%" + parentTitle + "%");
+		if (!StringUtil.isNullOrEmpty(title)) {
+			query.append(" and po.title like :title");
+			params.put("title", "%" + title + "%");
+		} 
+		if (StringUtil.isNullOrEmpty(imagesColumnId)) {
+			query.append(" and po.imagesColumn.id = null");
 		} else {
-			query.append(" and ( po.parentTitle is null or po.parentTitle = '')");
+			query.append(" and po.imagesColumn.id = :columnId");
+			params.put("imagesColumnId", imagesColumnId);
 		}
-		if (!StringUtil.isNullOrEmpty(titleKey)) {
-			query.append(" and po.titleKey = :titleKey");
-			params.put("titleKey", titleKey);
-		}
-		query.append(" order by po.orderIndex asc");
+		query.append(" order by po.imgNumber asc");
 		List<Images> list = (List<Images>) DAOUtil.findWithPaging(pagingObject, query.toString(), params);
 		return new GridResult<Images>(list, pagingObject);
 	}
 	
 	/**
 	 * Find List<Images>
-	 * @param parentTitle
-	 * @param titleKey
+	 * @param title
+	 * @param imagesColumnId
 	 * @param pagingObject
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static List<Images> findListByName(String parentTitle, String titleKey, PagingObject pagingObject) {
+	public static List<Images> findList(String title, String imagesColumnId, PagingObject pagingObject) {
 		StringBuilder query = new StringBuilder(" from ").append(Images.class.getName()).append(" po where 1 = 1");
 		Map<String, Object> params = new HashMap<String, Object>();
-		if (!StringUtil.isNullOrEmpty(parentTitle)) {
-			query.append(" and po.parentTitle like :parentTitle");
-			params.put("parentTitle", "%" + parentTitle + "%");
+		if (!StringUtil.isNullOrEmpty(title)) {
+			query.append(" and po.title like :title");
+			params.put("title", "%" + title + "%");
+		}
+		if (StringUtil.isNullOrEmpty(imagesColumnId)) {
+			query.append(" and po.imagesColumn.id = null");
 		} else {
-			query.append(" and ( po.parentTitle is null or po.parentTitle = '')");
+			query.append(" and po.imagesColumn.id = :columnId");
+			params.put("imagesColumnId", imagesColumnId);
 		}
-		if (!StringUtil.isNullOrEmpty(titleKey)) {
-			query.append(" and po.titleKey = :titleKey");
-			params.put("titleKey", titleKey);
-		}
-		query.append(" order by po.orderIndex asc");
+		query.append(" order by po.imgNumber asc");
 		return (List<Images>) DAOUtil.findWithPaging(pagingObject, query.toString(), params);
 	}
 
 	/**
-	 * @return the parentTitle
+	 * @return the imagesColumn
 	 */
-	public String getParentTitle() {
-		return parentTitle;
+	public ImagesColumn getImagesColumn() {
+		return imagesColumn;
 	}
 
 	/**
-	 * @param parentTitle the parentTitle to set
+	 * @param imagesColumn the imagesColumn to set
 	 */
-	public void setParentTitle(String parentTitle) {
-		this.parentTitle = parentTitle;
+	public void setImagesColumn(ImagesColumn imagesColumn) {
+		this.imagesColumn = imagesColumn;
 	}
 
 	/**
@@ -145,31 +146,19 @@ public class Images extends PO {
 	}
 
 	/**
-	 * @return the titleKey
+	 * @return the imgNumber
 	 */
-	public String getTitleKey() {
-		return titleKey;
+	public String getImgNumber() {
+		return imgNumber;
 	}
 
 	/**
-	 * @param titleKey the titleKey to set
+	 * @param imgNumber the imgNumber to set
 	 */
-	public void setTitleKey(String titleKey) {
-		this.titleKey = titleKey;
+	public void setImgNumber(String imgNumber) {
+		this.imgNumber = imgNumber;
 	}
 
-	/**
-	 * @return the orderIndex
-	 */
-	public float getOrderIndex() {
-		return orderIndex;
-	}
-
-	/**
-	 * @param orderIndex the orderIndex to set
-	 */
-	public void setOrderIndex(float orderIndex) {
-		this.orderIndex = orderIndex;
-	}
 	
+
 }

@@ -28,7 +28,7 @@ body { background: none; }
 <body class="easyui-layout">
 <div class="status" data-options="region:'north'" style="padding:0px; height:auto">
     <div class="status-header">
-      <h1>信息目录管理</h1>
+      <h1>图片目录管理</h1>
       <div class="btn-group">
         <a class="btn btn-large tip-bottom" title="删除" onClick="javascript:del();"><i class="icon-pl"></i>
         <span class="btn-txt">删除</span>
@@ -39,46 +39,30 @@ body { background: none; }
       </div>
     </div>
     <div class="search">
-      <div style="float: left;"><input style="width: 300px;" type="text" name="name" value="请输入目录名称" onblur="if (value=='') {value='请输入目录名称'}" onfocus="if(value=='请输入目录名称') {value=''}"></div>
+      <div style="float: left;"><input style="width: 300px;" type="text" name="name" value="请输入图片目录名称" onblur="if (value=='') {value='请输入图片目录名称'}" onfocus="if(value=='请输入图片目录名称') {value=''}"></div>
       <div class="toolbar" style="float: left;margin-left: 20px;">
         <button id="easyui-search" class="btn btn-info" style="width: 51px;height: 30px;">查询</button>
       </div>
     </div>
 </div>
-<div data-options="region:'west',split:true" style="width:180px;">
-	<ul id="tree" class="easyui-tree"></ul>
-</div>
+
 <div data-options="region:'center'">
-	<table id="columnGrid"></table>
+	<table id="imagesColumnGrid"></table>
 </div>
 <script type="text/javascript">
 $(function() {
 	
-	var parentId = '${parentId}'; //全局变量，辅助查询使用
-	
-	//目录查询
+	//图片目录查询
 	$('#easyui-search').click(function(){
-		$('#columnGrid').datagrid('load', {name: $('.search input[name=name]').val(), parentId: parentId});
+		$('#imagesColumnGrid').datagrid('load', {name: $('.search input[name=name]').val()});
 	});
 	
-	//新增目录
+	//新增图片目录
 	$('#add_button').click(function() {
-		var node = $('#tree').tree('getSelected');
-		window.location.href='<@url value="/cms/column/edit/new?parentId=' + (node == null ? '' : node.id) " />;
+		window.location.href='<@url value="/cms/imagesColumn/edit/new"/>';
 	});
 	
-	//目录栏目树
-	$('#tree').tree({
-		url: '<@url value="/cms/column/tree"/>',
-		onSelect: function(node) {
-			$('#tree').tree('toggle', node.target);
-			parentId = node.id;
-			$('.search input[name=name]').val('');
-			$('#columnGrid').datagrid('load', {parentId: parentId});
-		}
-	});
-	
-	$('#columnGrid').datagrid({
+	$('#imagesColumnGrid').datagrid({
 		loadMsg: '正在加载，请稍候...',
 		singleSelect: false,
 		fit: true,
@@ -87,17 +71,15 @@ $(function() {
 		pagination: true,
 		rownumbers: true,
 		idField: 'id',
-		url: '<@url value="/cms/column/find"/>',
-		queryParams: {parentId: parentId},
+		url: '<@url value="/cms/imagesColumn/find"/>',
 		columns: [[
 			{field: 'ck', checkbox:true, width: 2, align: 'center'},
 		    {field: 'name', title: '目录名称', width: 10, align: 'center'},
-		    {field: 'shortKey', title: '英文名称', width: 10, align: 'center'},
-		    {field: 'typeStr', title: '属性', width: 10, align: 'center'},
+		    {field: 'key', title: '英文名称', width: 10, align: 'center'},
 		    {field: 'orderIndex', title: '排序', width: 10, align: 'center'},
 			{field: 'id', title: '操作', width: 10, align: 'center',
 				formatter: function(value, rec) {
-					return '<a href="<@url value="/cms/column/edit/'+ rec.id+'" />">Edit</a>';
+					return '<a href="<@url value="/cms/imagesColumn/edit/'+ rec.id+'" />">Edit</a>';
 				}
 			}
 		]]
@@ -107,12 +89,12 @@ $(function() {
 
 //删除
 function del() {
-	var sels = $('#columnGrid').datagrid('getSelections');
+	var sels = $('#imagesColumnGrid').datagrid('getSelections');
 	if (sels.length == 0) {
 		$.messager.alert('操作提示', '请选择要删除的记录！', 'warning');
 	}else{
 		$.messager
-		.confirm('操作提示', '您确认要删除选中的&nbsp;<font size=5 color = red>'
+		.confirm('操作提示', '该栏目下的所有图片将被删除，您确认要删除选中的&nbsp;<font size=5 color = red>'
 						+ (sels.length) + '</font>&nbsp;条记录吗？',
 				function(r) {
 							if (r) {
@@ -122,12 +104,11 @@ function del() {
 								}
 								$.ajax({
 									   type: "POST",
-									   url: "<@url value='/cms/column/delete'/>",
+									   url: "<@url value='/cms/imagesColumn/delete'/>",
 									   data: "ids="+ids,
 									   success: function(msg){
-										   $("#columnGrid").datagrid("clearSelections");
-										   $('#columnGrid').datagrid('reload');
-										   $('#tree').tree('reload');
+										   $("#imagesColumnGrid").datagrid("clearSelections");
+										   $('#imagesColumnGrid').datagrid('reload');
 									   }
 									});
 							}

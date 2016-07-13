@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lyceum.cms.application.ImagesApplication;
 import com.lyceum.cms.core.Images;
+import com.lyceum.cms.core.ImagesColumn;
 import com.zealyo.common.mvc.FreeMarkerController;
 import com.zealyo.jdbc.util.PagingObject;
 
@@ -39,21 +40,21 @@ public class ImagesController extends FreeMarkerController {
 	@Override
 	@RequestMapping("")
 	public String index(HttpServletRequest request, ModelMap map) {
-		List<Images> parentList = Images.findListByName(null, null, new PagingObject());
-		map.put("parentList", parentList);
+		List<ImagesColumn> columnList = ImagesColumn.findList(null, new PagingObject());
+		map.put("columnList", columnList);
 		return getViewName("ftls/images/index");
 	}
 	
 	/**
 	 * 查找子栏目
-	 * @param parentTitle
+	 * @param title
 	 * @param pagingObject
 	 * @return
 	 */
 	@RequestMapping(value = "find", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONObject find(String parentTitle,PagingObject pagingObject) {
-		return Images.findGridResultByName(parentTitle, null, pagingObject).toJsonObject();
+	public JSONObject find(String title,PagingObject pagingObject) {
+		return Images.findGridResultByName(title, null, pagingObject).toJsonObject();
 	}
 	
 	/**
@@ -64,12 +65,14 @@ public class ImagesController extends FreeMarkerController {
 	 * @return
 	 */
 	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable String id, String parentTitle, ModelMap map) {
-		map.put("parentTitle", parentTitle);
+	public String edit(@PathVariable String id, String imagesColumnId, ModelMap map) {
+		map.put("imagesColumnId", imagesColumnId);
+		ImagesColumn imagesColumnPO = ImagesColumn.get(imagesColumnId);
+		map.put("imagesColumnPO", imagesColumnPO);
 		Images po = null;
 		if ("new".equals(id)) {
 			po = new Images();
-			po.setParentTitle(parentTitle);
+			po.setImagesColumn(imagesColumnPO);
 			map.put("po", po);
 		} else {
 			po = Images.get(id);
@@ -85,7 +88,9 @@ public class ImagesController extends FreeMarkerController {
 	 * @return
 	 */
 	@RequestMapping(value = "view/{id}", method = RequestMethod.GET)
-	public String view(@PathVariable String id, ModelMap map) {
+	public String view(@PathVariable String id, String imagesColumnId, ModelMap map) {
+		ImagesColumn imagesColumnPO = ImagesColumn.get(imagesColumnId);
+		map.put("imagesColumnPO", imagesColumnPO);
 		Images po = Images.get(id);
 		map.put("po", po);
 		return getViewName("ftls/images/view");
@@ -98,7 +103,7 @@ public class ImagesController extends FreeMarkerController {
 	 */
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean edit(Images po ,@RequestParam(value="file",required=false) MultipartFile file,
+	public boolean edit(Images po, String imagesColumnId, @RequestParam(value="file",required=false) MultipartFile file,
             HttpServletRequest request) throws Exception{
         String path = "";
         String envVar = "";
@@ -124,6 +129,7 @@ public class ImagesController extends FreeMarkerController {
             }
         }
         po.setImgUrl(path);
+        po.setImagesColumn(ImagesColumn.get(imagesColumnId));
 		return imagesApplication.saveOrUpdate(po);
 	}
 	
