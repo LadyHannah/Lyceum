@@ -25,13 +25,13 @@
 				<div class="navbar-header">
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="english.html">国际英语</a></li>
-							<li><a href="minority.html">小语种</a></li>
-							<li><a href="team.html">团队介绍</a></li>
-							<li class="sign"><a></a></li>
-							<li><a href="#">预约试听</a></li>
+							<li><a href="<@url value='/col/gjyy'/>" target="_blank">国际英语</a></li>
+							<li><a href="<@url value='/col/xyz'/>" target="_blank">小语种</a></li>
+							<li><a href="#">团队介绍</a></li>
+							<li class="sign"><a href="${request.contextPath}"></a></li>
+							<li><a href="${request.contextPath}/#listen" target="_blank">预约试听</a></li>
 							<li><a href="#">新闻动态</a></li>
-							<li><a href="#">加入我们</a></li>
+							<li><a href="${request.contextPath}/#join" target="_blank">加入我们</a></li>
 						</ul>
 					</div>
 				</div>
@@ -41,7 +41,8 @@
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
-		      <img src="${request.contextPath}/themes/images/team_02.jpg">
+		      <!-- <img src="${request.contextPath}/themes/images/team_02.jpg"> -->
+		      <img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=a'/>">
 		    </div>
 		  </div>
 		  <div class="Lyceum">
@@ -59,16 +60,20 @@
 		</div>
 	</div>
 	<div class="fullimg mb15">
-		<img src="${request.contextPath}/themes/images/team_03.jpg" alt="">
+		<!-- <img src="${request.contextPath}/themes/images/team_03.jpg" alt=""> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=b'/>">
 	</div>
 	<div class="fullimg mb15">
-		<img src="${request.contextPath}/themes/images/team_04.jpg" alt="">
+		<!-- <img src="${request.contextPath}/themes/images/team_04.jpg" alt=""> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=c'/>">
 	</div>
 	<div class="fullimg mb15">
-		<img src="${request.contextPath}/themes/images/team_05.jpg" alt="">
+		<!-- <img src="${request.contextPath}/themes/images/team_05.jpg" alt=""> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=d'/>">
 	</div>
 	<div class="fullimg mb15">
-		<img src="${request.contextPath}/themes/images/team_06.jpg" alt="">
+		<!-- <img src="${request.contextPath}/themes/images/team_06.jpg" alt=""> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=e'/>">
 	</div>
 	
 	

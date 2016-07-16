@@ -81,21 +81,6 @@ public class ImagesColumn extends PO {
 	}
 	
 	/**
-	 * Find column by Name
-	 * @param name
-	 * @return PO
-	 */
-	public static ImagesColumn findColumnByName(String name) {
-		StringBuilder query = new StringBuilder(" from ").append(ImagesColumn.class.getName()).append(" po where 1 = 1");
-		Map<String, Object> params = new HashMap<String, Object>();
-		if (!StringUtil.isNullOrEmpty(name)) {
-			query.append(" and po.name like :name");
-			params.put("name", "%" + name + "%");
-		}
-		return (ImagesColumn) DAOUtil.findWithoutPaging(query.toString(), params);
-	}
-	
-	/**
 	 * @return the name
 	 */
 	public String getName() {

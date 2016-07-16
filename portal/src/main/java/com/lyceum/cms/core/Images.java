@@ -51,6 +51,30 @@ public class Images extends PO {
 	public static Images get(String id) {
 		return DAOUtil.get(Images.class, id);
 	}
+	
+	/**
+	 * Find List<Images>
+	 * @param imgNumber
+	 * @param imagesColumnId
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<Images> getByImgNumber(String imgNumber, String imagesColumnId) {
+		StringBuilder query = new StringBuilder(" from ").append(Images.class.getName()).append(" po where 1 = 1");
+		Map<String, Object> params = new HashMap<String, Object>();
+		if (!StringUtil.isNullOrEmpty(imgNumber)) {
+			query.append(" and po.imgNumber = :imgNumber");
+			params.put("imgNumber", imgNumber);
+		}
+		if (StringUtil.isNullOrEmpty(imagesColumnId)) {
+			query.append(" and po.imagesColumn.id = null");
+		} else {
+			query.append(" and po.imagesColumn.id = :imagesColumn");
+			params.put("imagesColumn", imagesColumnId);
+		}
+		query.append(" order by po.imgNumber asc");
+		return (List<Images>) DAOUtil.findWithoutPaging(query.toString(), params);
+	}
 
 	/**
 	 * Find GridResult<Images>
@@ -70,8 +94,8 @@ public class Images extends PO {
 		if (StringUtil.isNullOrEmpty(imagesColumnId)) {
 			query.append(" and po.imagesColumn.id = null");
 		} else {
-			query.append(" and po.imagesColumn.id = :columnId");
-			params.put("imagesColumnId", imagesColumnId);
+			query.append(" and po.imagesColumn.id = :imagesColumn");
+			params.put("imagesColumn", imagesColumnId);
 		}
 		query.append(" order by po.imgNumber asc");
 		List<Images> list = (List<Images>) DAOUtil.findWithPaging(pagingObject, query.toString(), params);
@@ -96,8 +120,8 @@ public class Images extends PO {
 		if (StringUtil.isNullOrEmpty(imagesColumnId)) {
 			query.append(" and po.imagesColumn.id = null");
 		} else {
-			query.append(" and po.imagesColumn.id = :columnId");
-			params.put("imagesColumnId", imagesColumnId);
+			query.append(" and po.imagesColumn.id = :imagesColumn");
+			params.put("imagesColumn", imagesColumnId);
 		}
 		query.append(" order by po.imgNumber asc");
 		return (List<Images>) DAOUtil.findWithPaging(pagingObject, query.toString(), params);

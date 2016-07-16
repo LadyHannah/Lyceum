@@ -27,6 +27,7 @@ $(function() {
 				$.messager.alert('提示', '请填写图片编号!', 'warning');
 				return false;
 			}
+			var imagesColumnId = $('input[name=imagesColumnId]').val();
 			var isValid = $(this).form('validate');
 			if (!isValid) {
 				alert("表单验证失败，请检查各输入项是否按照要求填写");
@@ -60,7 +61,7 @@ $(function() {
 	</div>
 	<form id="images_form" action="<@url value='/cms/images/edit'/>" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="id">
-	<input type="hidden" name="{imagesColumnId}">
+	<input type="hidden" name="imagesColumnId" value="${imagesColumnId}">
 	<div class="widget-content nopadding">
 		<div id="p1" class="easyui-panel">
 			<table style="width: 100%;" class="form">

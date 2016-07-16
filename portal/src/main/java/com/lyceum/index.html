@@ -64,15 +64,8 @@
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
-		    <#if imagesList??>
-    			<#list imagesList as img>
-    				<#if img.titleKey == 'jdt'>
-    			<img src="<@url value='/showImage?imgUrl=${img.imgUrl}'/>">
-    				</#if>
-    			</#list>
-    		<#else>
-		      	<img src="${request.contextPath}/themes/images/head-bg.jpg">
-    		</#if>
+		    	<!-- <img src="${request.contextPath}/themes/images/head-bg.jpg"> -->
+    			<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=a'/>">
 		    </div>
 		  </div>
 		  <div class="Lyceum">
@@ -99,31 +92,11 @@
 					<p class="text-left">${art.content}</p>
 				</div>
 				<div class="col-md-4 col-md-offset-1">
-					<img src="${request.contextPath}/themes/images/english_01.jpg" alt="">
+					<!-- <img src="${request.contextPath}/themes/images/english_01.jpg" alt=""> -->
+					<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=b'/>">
 				</div>
 			</div>
 				</#list>
-			<#else>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-1">
-						<h4>托马斯ACT工坊</h4>
-						<h3>吕克昂国际教育旗下第一品牌</h3>
-						<p class="text-left">ACT考试新受重视，愿以真诚心与技术执念，为家长和学生提供回票价的教学。自TOEFL、ACT、SAT以至GRE、GMAT的美标考试，承袭一致的测试哲学与考核技法。本坊多年来以死磕精神破解美标思路，教研成果显著；ACT所重之逻辑与人文素养，恰为我坊强项，独特优势赋予团队充分自信。</p>
-					</div>
-					<div class="col-md-4 col-md-offset-1">
-						<img src="${request.contextPath}/themes/images/english_01.jpg" alt="">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-1">
-						<h4>托福/雅思</h4>
-						<h3>TOEFL/IELTS</h3>
-						<p class="text-left">ACT考试新受重视，愿以真诚心与技术执念，为家长和学生提供回票价的教学。自TOEFL、ACT、SAT以至GRE、GMAT的美标考试，承袭一致的测试哲学与考核技法。本坊多年来以死磕精神破解美标思路，教研成果显著；ACT所重之逻辑与人文素养，恰为我坊强项，独特优势赋予团队充分自信。</p>
-					</div>
-					<div class="col-md-4 col-md-offset-1">
-						<img src="${request.contextPath}/themes/images/english_02.jpg" alt="">
-					</div>
-				</div>
 			</#if>
 		</div>
 	</div>
@@ -135,34 +108,40 @@
 			<div class="row">
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-japanese'/>" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_01.jpg" alt="">
+						<!-- <img src="${request.contextPath}/themes/images/language_01.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=d'/>" alt="">
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-korea'/>" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_02.jpg" alt="">
+						<!-- <img src="${request.contextPath}/themes/images/language_02.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=e'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-germany'/>" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_03.jpg" alt="">
+						<!-- <img src="${request.contextPath}/themes/images/language_03.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=f'/>">
 					</a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-italy'/>" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_04.jpg" alt="">
+						<!-- <img src="${request.contextPath}/themes/images/language_04.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=g'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-spanish'/>" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_05.jpg" alt="">
+						<!-- <img src="${request.contextPath}/themes/images/language_05.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=h'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="<@url value='/col/xyz-franch'/>" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_06.jpg" alt="">
+					<a href="<@url value='/col/xyz-french'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_06.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=i'/>">
 					</a>
 				</div>
 			</div>
@@ -175,7 +154,8 @@
 			<p>${tdjs.description}</p>
 			<!-- <p>吕克昂国际教育集合了各地的优秀教师，形成了多元的教研团队，沉浸教学界多年的学院派，初出茅庐的年轻学霸，以及在留中国的多年外教,兼而有之，但有一点他们是共同的，中教师均持专业业内权威证书，专职外教具有三年以上教学经验与资源，因此可以说，吕克昂国际教育教研团队的专业化精，细化程度，业界难出其右，以下几位老师为吕克昂教研核心团队，为尊重个人隐私兼职教师暂不列出。</p> -->
 			<div class="intro">
-				<img src="${request.contextPath}/themes/images/team_01.jpg" alt="">
+				<!-- <img src="${request.contextPath}/themes/images/team_01.jpg" alt=""> -->
+				<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=j'/>">
 			</div>
 		</div>
 	</div>
@@ -186,14 +166,16 @@
 			<p>${zsal.description}</p>
 			<!-- <p>近几年部分学生案例，保证100%的真实性，但见一丝造假，接受任何诅咒，培训行无本坊之名。另外，案例描述中，</br>我们也为大家传达本坊一些重要的理念，方便大家客观的看待所谓的案例。</p> -->
 			<div class="real">
-				<img src="${request.contextPath}/themes/images/real.jpg">
+				<!-- <img src="${request.contextPath}/themes/images/real.jpg"> -->
+				<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=k'/>">
 			</div>
 		</div>
 	</div>
-	<div id="listen" class="listen" style="background-image: url('${request.contextPath}/themes/images/listen.jpg')">
+	<!-- <div id="listen" class="listen" style="background-image: url('${request.contextPath}/themes/images/listen.jpg')"> -->
+	<div id="listen" class="listen" style="background-image: url('<@url value="/showImage?imagesColumnId=${imagesColumnId}&imgNumber=l"/>')">
 		<div class="container">
 			<h2>预约试听</h2>
-			<h3>限时免费体验，注册即享免费试听课与优惠信息。</h3>
+			<h3>${yyst.description}</h3>
 			<div class="register">
 				<div class="validate">
 					<input type="text" name="name" placeholder="Name">
@@ -235,7 +217,9 @@
 	<div class="joinus" id="join">
 		<div class="container">
 			<div class="joincon">
-				<img src="${request.contextPath}/themes/images/join-us.jpg" alt="">
+				<!-- <img src="${request.contextPath}/themes/images/join-us.jpg" alt=""> -->
+				<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=m'/>">
+				
 			</div>
 		</div>
 	</div>

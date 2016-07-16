@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lyceum.cms.core.Images;
+import com.lyceum.cms.core.ImagesColumn;
 import com.zealyo.common.utils.StringUtil;
 
 
@@ -21,10 +22,11 @@ public class ImagesApplication {
 	 * @param po
 	 * @return
 	 */
-	public boolean saveOrUpdate(Images po) {
+	public boolean saveOrUpdate(Images po, String imagesColumnId) {
 		if (null == po) {
 			return false;
 		}
+		po.setImagesColumn(ImagesColumn.get(imagesColumnId));
 		po.saveOrUpdate();
 		return true;
 	}

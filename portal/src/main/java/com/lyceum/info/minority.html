@@ -25,13 +25,13 @@
 				<div class="navbar-header">
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="english.html">国际英语</a></li>
-							<li><a href="minority.html">小语种</a></li>
-							<li><a href="team.html">团队介绍</a></li>
-							<li class="sign"><a></a></li>
-							<li><a href="#">预约试听</a></li>
+							<li><a href="<@url value='/col/gjyy'/>" target="_blank">国际英语</a></li>
+							<li><a href="#">小语种</a></li>
+							<li><a href="<@url value='/col/tdjs'/>" target="_blank">团队介绍</a></li>
+							<li class="sign"><a href="${request.contextPath}"></a></li>
+							<li><a href="${request.contextPath}/#listen" target="_blank">预约试听</a></li>
 							<li><a href="#">新闻动态</a></li>
-							<li><a href="#">加入我们</a></li>
+							<li><a href="${request.contextPath}/#join" target="_blank">加入我们</a></li>
 						</ul>
 					</div>
 				</div>
@@ -41,7 +41,9 @@
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
-		      <img src="${request.contextPath}/themes/images/minority_01.jpg">
+		      <!-- <img src="${request.contextPath}/themes/images/minority_01.jpg"> -->
+		      <img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=a'/>">
+		      
 		    </div>
 		  </div>
 		</div>
@@ -52,35 +54,41 @@
 			<p>吕克昂欧亚语塾为吕克昂国际教育旗下小语种品牌，致力于提供高效实用国际语言培训，</br>课程涵盖德语、法语、西班牙语、意大利语、日语、韩语等众多欧亚语系。联姻“异邦言”官方微信平台，</br>向社会传递最具时代质感和文化品位的信息。吕克昂欧亚语塾，坚持国际化视野，“为精英而来”，形成了独创的品牌定位。</p>
 			<div class="row">
 				<div class="col-md-4">
-					<a href="japanese.html" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_01.jpg" alt="">
+					<a href="<@url value='/col/xyz-japanese'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_01.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=b'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="korea.html" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_02.jpg" alt="">
+					<a href="<@url value='/col/xyz-korea'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_02.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=c'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="germany.html" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_03.jpg" alt="">
+					<a href="<@url value='/col/xyz-germany'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_03.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=d'/>">
 					</a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
-					<a href="italy.html" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_04.jpg" alt="">
+					<a href="<@url value='/col/xyz-italy'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_04.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=e'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="spanish.html" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_05.jpg" alt="">
+					<a href="<@url value='/col/xyz-spanish'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_05.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=f'/>">
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="franch.html" target="_blank">
-						<img src="${request.contextPath}/themes/images/language_06.jpg" alt="">
+					<a href="<@url value='/col/xyz-french'/>" target="_blank">
+						<!-- <img src="${request.contextPath}/themes/images/language_06.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=g'/>">
 					</a>
 				</div>
 			</div>
@@ -88,7 +96,8 @@
 	</div>
 	<div class="teaching">
 		<div class="container">
-			<img src="${request.contextPath}/themes/images/minority_02.jpg">
+			<!-- <img src="${request.contextPath}/themes/images/minority_02.jpg"> -->
+			<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=h'/>">
 		</div>
 	</div>
 	
@@ -97,7 +106,8 @@
 		<h2>异邦言</h2>
 			<p>Barbarian Languages, 为杭州吕克昂教育咨询有限公司旗下的小语种培训品牌代称，同时也是一个致力于构建全球最有精神质感的O2O欧亚</br>语言学习和文化交流微社区。本微信号坚持以“品质、深度、异文化”为选文理念，致力于长期为关注者提供最有价值的异国思想盛宴，</br>优选最新的游学留学资讯，并定期提供线上和线下的语言学习支持和咨询服务。</p>
 		<h3 class="magazine">异邦言杂志刊物</h3>
-		<img src="${request.contextPath}/themes/images/minority_03.jpg" alt="">
+		<!-- <img src="${request.contextPath}/themes/images/minority_03.jpg" alt=""> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=i'/>">
 		</div>
 	</div>
 	<div class="wechat">
@@ -112,7 +122,8 @@
 				<p>秒懂韩国|K-pop虐杀亚洲少女</p>   
 			</div>
 			<div class="code">
-				<img src="${request.contextPath}/themes/images/code.png" alt="">
+				<!-- <img src="${request.contextPath}/themes/images/code.png" alt=""> -->
+				<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=j'/>">
 			</div>
 			<p class="tip">扫码关注异邦言公众号</p>
 			<p class="tip more">更多资讯</br>，</p>

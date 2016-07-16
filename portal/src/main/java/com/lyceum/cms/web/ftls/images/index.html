@@ -102,6 +102,7 @@ $(function() {
 		rownumbers: true,
 		idField: 'id',
 		url: '<@url value="/cms/images/find"/>',
+		queryParams : {imagesColumnId:imagesColumnId},
 		toolbar: '#tb',
 		columns: [[
 			{field: 'ck', checkbox:true, width: 5, align: 'center'},

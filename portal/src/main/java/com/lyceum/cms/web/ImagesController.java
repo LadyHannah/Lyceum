@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lyceum.IndexController;
 import com.lyceum.cms.application.ImagesApplication;
 import com.lyceum.cms.core.Images;
 import com.lyceum.cms.core.ImagesColumn;
@@ -33,6 +36,8 @@ import net.sf.json.JSONObject;
 @Controller
 @RequestMapping("cms/images")
 public class ImagesController extends FreeMarkerController {
+	
+	protected static final Logger log = LoggerFactory.getLogger(IndexController.class);
 
 	@Autowired
 	private ImagesApplication imagesApplication;
@@ -40,8 +45,8 @@ public class ImagesController extends FreeMarkerController {
 	@Override
 	@RequestMapping("")
 	public String index(HttpServletRequest request, ModelMap map) {
-		List<ImagesColumn> columnList = ImagesColumn.findList(null, new PagingObject());
-		map.put("columnList", columnList);
+		/*List<ImagesColumn> columnList = ImagesColumn.findList(null, new PagingObject());
+		map.put("columnList", columnList);*/
 		return getViewName("ftls/images/index");
 	}
 	
@@ -53,8 +58,8 @@ public class ImagesController extends FreeMarkerController {
 	 */
 	@RequestMapping(value = "find", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONObject find(String title,PagingObject pagingObject) {
-		return Images.findGridResultByName(title, null, pagingObject).toJsonObject();
+	public JSONObject find(String title, String imagesColumnId, PagingObject pagingObject) {
+		return Images.findGridResultByName(title, imagesColumnId, pagingObject).toJsonObject();
 	}
 	
 	/**
@@ -123,14 +128,12 @@ public class ImagesController extends FreeMarkerController {
                 stream.write(bytes);
                 stream.close();
             } catch (Exception e) {
-            	System.out.println(e.getMessage());
-            	e.getMessage();
+            	log.info(e.getMessage());
                 return false;
             }
         }
         po.setImgUrl(path);
-        po.setImagesColumn(ImagesColumn.get(imagesColumnId));
-		return imagesApplication.saveOrUpdate(po);
+		return imagesApplication.saveOrUpdate(po, imagesColumnId);
 	}
 	
 	/**
