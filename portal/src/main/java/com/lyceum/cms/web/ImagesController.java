@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +39,8 @@ public class ImagesController extends FreeMarkerController {
 	
 	protected static final Logger log = LoggerFactory.getLogger(IndexController.class);
 
+	@Value("#{settings['filePath']}")
+	private  String filePath;
 	@Autowired
 	private ImagesApplication imagesApplication;
 	
@@ -110,7 +113,7 @@ public class ImagesController extends FreeMarkerController {
 	public boolean edit(Images po, String imagesColumnId, @RequestParam(value="file",required=false) MultipartFile file,
             HttpServletRequest request) throws Exception{
         String path = "";
-        String envVar = "";
+        //String envVar = "";
         if (!file.isEmpty()) {
             //获得文件类型（可以判断如果不是图片，禁止上传）
             String contentType = file.getContentType();
@@ -119,11 +122,11 @@ public class ImagesController extends FreeMarkerController {
             //新的图片文件名 = 获取时间戳+"."图片扩展名
             path = imagesApplication.getRandomFileName() + "." + extensionName;
             //获取当前服务器地址
-            envVar = this.getClass().getResource("/common").getPath();   //Local environment
+            //envVar = this.getClass().getResource("/common").getPath();   //Local environment
         	//envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";  //server environment
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(envVar + path)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath + path)));
                 stream.write(bytes);
                 stream.close();
             } catch (Exception e) {
@@ -132,7 +135,8 @@ public class ImagesController extends FreeMarkerController {
             }
         }
         po.setImgUrl(path);
-		return imagesApplication.saveOrUpdate(po, imagesColumnId);
+        po.setImagesColumn(ImagesColumn.get(imagesColumnId));
+		return imagesApplication.saveOrUpdate(po);
 	}
 	
 	/**

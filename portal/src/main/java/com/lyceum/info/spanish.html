@@ -41,7 +41,8 @@
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
-		      <img src="${request.contextPath}/themes/images/spanish_01.jpg">
+		      <!-- <img src="${request.contextPath}/themes/images/spanish_01.jpg"> -->
+		      <img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=a'/>">
 		    </div>
 		  </div>
 		  <div class="Lyceum">
@@ -130,20 +131,24 @@
 		</div>
 	</div>
 	<div class="fullimg">
-		<img src="${request.contextPath}/themes/images/spanish_02.jpg">
+		<!-- <img src="${request.contextPath}/themes/images/spanish_02.jpg"> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=c'/>">
 	</div>
 	<div class="fullimg">
-		<img src="${request.contextPath}/themes/images/spanish_03.jpg" alt="">
+		<!-- <img src="${request.contextPath}/themes/images/spanish_03.jpg" alt=""> -->
+		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=d'/>">
 	</div>
 	<div class="study spanish">
 		<div class="container">
-			<img src="${request.contextPath}/themes/images/spanish_04.jpg" alt="">
+			<!-- <img src="${request.contextPath}/themes/images/spanish_04.jpg" alt=""> -->
+			<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=e'/>">
 		</div>
 	</div>
 	<div class="good">
 		<h5 class="red">留学优势</h5>
 		<div class="container">
-			<img src="${request.contextPath}/themes/images/spanish_05.jpg" alt="">
+			<!-- <img src="${request.contextPath}/themes/images/spanish_05.jpg" alt=""> -->
+			<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=f'/>">
 		</div>
 	</div>
 </body>

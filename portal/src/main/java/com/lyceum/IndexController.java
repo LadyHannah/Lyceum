@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,9 @@ import com.zealyo.jdbc.util.PagingObject;
 public class IndexController extends FreeMarkerController{
 
 	protected static final Logger log = LoggerFactory.getLogger(IndexController.class);
+	
+	@Value("#{settings['filePath']}")
+	private  String filePath;
 	
 	@RequestMapping("")
 	public String index(HttpServletRequest request, ModelMap params) {
@@ -147,10 +151,10 @@ public class IndexController extends FreeMarkerController{
 			FileInputStream fis = null; 
 			OutputStream os = null; 
 			//获取当前服务器地址
-			String envVar = this.getClass().getResource("/common").getPath();   //Local environment
+			//String envVar = this.getClass().getResource("/common").getPath();   //Local environment
 			//String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";  //server environment
 			try {
-				fis = new FileInputStream(envVar + images.getImgUrl());
+				fis = new FileInputStream(filePath + images.getImgUrl());
 				os = response.getOutputStream();
 				int count = 0;
 				int i = fis.available();

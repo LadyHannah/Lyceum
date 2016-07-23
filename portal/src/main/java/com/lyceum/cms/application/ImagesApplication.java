@@ -5,11 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lyceum.cms.core.Images;
-import com.lyceum.cms.core.ImagesColumn;
 import com.zealyo.common.utils.StringUtil;
 
 
@@ -17,16 +17,19 @@ import com.zealyo.common.utils.StringUtil;
 @Transactional
 public class ImagesApplication {
 	
+	@Value("#{settings['filePath']}")
+	private  String filePath;
+	
 	/**
 	 * Save or Update
 	 * @param po
 	 * @return
 	 */
-	public boolean saveOrUpdate(Images po, String imagesColumnId) {
+	public boolean saveOrUpdate(Images po) {
 		if (null == po) {
 			return false;
 		}
-		po.setImagesColumn(ImagesColumn.get(imagesColumnId));
+	//	po.setImagesColumn(ImagesColumn.get(imagesColumnId));
 		po.saveOrUpdate();
 		return true;
 	}
@@ -44,10 +47,10 @@ public class ImagesApplication {
 		for (String id : StringUtil.split(ids, ",")) {
 			po = Images.get(id);
 			if (null != po) {
-		        String envVar = this.getClass().getResource("/common").getPath();   //Local environment
+		        //String envVar = this.getClass().getResource("/common").getPath();   //Local environment
 		    	//String envVar = System.getenv("OPENSHIFT_DATA_DIR") + "/images/";  //server environment
 				//构建文件目录 
-		        File fileDir = new File(envVar+ po.getImgUrl());
+		        File fileDir = new File(filePath+ po.getImgUrl());
 		        if (fileDir.exists()) {
 		            //把之前的图片删除 以免太多没用的图片占据空间
 		            fileDir.delete();
