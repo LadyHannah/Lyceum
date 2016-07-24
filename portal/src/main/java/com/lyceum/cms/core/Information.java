@@ -40,7 +40,7 @@ public class Information extends PO {
 	@JsonProperty private String subTitle;
 
 	@CName("信息摘要")
-	@Column(name = "INFO_ABSTRACT", length = 100)
+	@Column(name = "INFO_ABSTRACT", length = 5000)
 	@JsonProperty private String infoAbstract;
 	
 	@CName("作者")

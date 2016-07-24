@@ -50,8 +50,16 @@
 	</div>
 	<div class="language">
 		<div class="container">
-			<h2>欧亚语塾</h2>
-			<p>吕克昂欧亚语塾为吕克昂国际教育旗下小语种品牌，致力于提供高效实用国际语言培训，</br>课程涵盖德语、法语、西班牙语、意大利语、日语、韩语等众多欧亚语系。联姻“异邦言”官方微信平台，</br>向社会传递最具时代质感和文化品位的信息。吕克昂欧亚语塾，坚持国际化视野，“为精英而来”，形成了独创的品牌定位。</p>
+		<#if xyzList??>
+			<#list xyzList as xyz>
+				<#if xyz.title == '欧亚语塾'>
+				<h2>${xyz.title}</h2>
+				<p>${xyz.content}</p>
+				</#if>
+			</#list>
+		</#if>
+			<!-- <h2>欧亚语塾</h2>
+			<p>吕克昂欧亚语塾为吕克昂国际教育旗下小语种品牌，致力于提供高效实用国际语言培训，</br>课程涵盖德语、法语、西班牙语、意大利语、日语、韩语等众多欧亚语系。联姻“异邦言”官方微信平台，</br>向社会传递最具时代质感和文化品位的信息。吕克昂欧亚语塾，坚持国际化视野，“为精英而来”，形成了独创的品牌定位。</p> -->
 			<div class="row">
 				<div class="col-md-4">
 					<a href="<@url value='/col/xyz-japanese'/>" target="_blank">
@@ -103,8 +111,16 @@
 	
 	<div class="language">
 		<div class="container">
-		<h2>异邦言</h2>
-			<p>Barbarian Languages, 为杭州吕克昂教育咨询有限公司旗下的小语种培训品牌代称，同时也是一个致力于构建全球最有精神质感的O2O欧亚</br>语言学习和文化交流微社区。本微信号坚持以“品质、深度、异文化”为选文理念，致力于长期为关注者提供最有价值的异国思想盛宴，</br>优选最新的游学留学资讯，并定期提供线上和线下的语言学习支持和咨询服务。</p>
+		<#if xyzList??>
+			<#list xyzList as xyz>
+				<#if xyz.title == '异邦言'>
+				<h2>${xyz.title}</h2>
+				<p>${xyz.content}</p>
+				</#if>
+			</#list>
+		</#if>
+		<!-- <h2>异邦言</h2>
+		<p>Barbarian Languages, 为杭州吕克昂教育咨询有限公司旗下的小语种培训品牌代称，同时也是一个致力于构建全球最有精神质感的O2O欧亚</br>语言学习和文化交流微社区。本微信号坚持以“品质、深度、异文化”为选文理念，致力于长期为关注者提供最有价值的异国思想盛宴，</br>优选最新的游学留学资讯，并定期提供线上和线下的语言学习支持和咨询服务。</p> -->
 		<h3 class="magazine">异邦言杂志刊物</h3>
 		<!-- <img src="${request.contextPath}/themes/images/minority_03.jpg" alt=""> -->
 		<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=i'/>">
@@ -112,15 +128,22 @@
 	</div>
 	<div class="wechat">
 		<div class="container">
-			<h4>异邦言微信公众号</h4>
-			<div class="title">
-				<p>拿破仑不止长得很矮，他还很酥很甜呢！</p>
-				<p>有彩蛋！在1960s日本黑白武士片里</p>
-				<p>我是意呆梨的Espresso,不是米国的星爸爸</p>
-				<p>秒懂西班牙|拉丁世界为何被西班牙语统治</p>
-				<p>德意志| 美到窒息的必去之地</p>
-				<p>秒懂韩国|K-pop虐杀亚洲少女</p>   
-			</div>
+		<h4>异邦言微信公众号</h4>
+		<div class="title">
+			<#if xyzList??>
+				<#list xyzList as xyz>
+					<#if xyz.title == '异邦言微信公众号'>
+					<p>${xyz.content}</p>
+					</#if>
+				</#list>
+			</#if>
+		</div>
+		<!-- <p>拿破仑不止长得很矮，他还很酥很甜呢！</p>
+		<p>有彩蛋！在1960s日本黑白武士片里</p>
+		<p>我是意呆梨的Espresso,不是米国的星爸爸</p>
+		<p>秒懂西班牙|拉丁世界为何被西班牙语统治</p>
+		<p>德意志| 美到窒息的必去之地</p>
+		<p>秒懂韩国|K-pop虐杀亚洲少女</p>    -->
 			<div class="code">
 				<!-- <img src="${request.contextPath}/themes/images/code.png" alt=""> -->
 				<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=j'/>">

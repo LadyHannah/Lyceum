@@ -52,7 +52,7 @@ public class ColumnInformationLink extends PO {
 	@JsonProperty private String title;
 	
 	@CName("信息摘要")
-	@Column(name = "INFO_ABSTRACT", length = 100)
+	@Column(name = "INFO_ABSTRACT", length = 5000)
 	@JsonProperty private String infoAbstract;
 	
 	@CName("信息访问等级1.2.3.4.5")

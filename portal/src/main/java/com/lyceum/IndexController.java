@@ -89,11 +89,17 @@ public class IndexController extends FreeMarkerController{
 		if (key.startsWith("gjyy")) {
 			ImagesColumn imagesColumnPO = DAOUtil.getByKey(ImagesColumn.class, "gjyy");
 			map.put("imagesColumnId", imagesColumnPO.getId());
+			ColumnInfo gjyy = DAOUtil.getByKey(ColumnInfo.class, "gjyy");
+			List<ColumnInformationLink> gjyyList = ColumnInformationLink.find(gjyy.getId(), paging);
+			map.put("gjyyList", gjyyList);
 			return getViewName("info/english");
 		}
 		if (key.equals("xyz")) {
 			ImagesColumn imagesColumnPO = DAOUtil.getByKey(ImagesColumn.class, "xyz");
 			map.put("imagesColumnId", imagesColumnPO.getId());
+			ColumnInfo xyz = DAOUtil.getByKey(ColumnInfo.class, "xyz");
+			List<ColumnInformationLink> xyzList = ColumnInformationLink.find(xyz.getId(), paging);
+			map.put("xyzList", xyzList);
 			return getViewName("info/minority");
 		}
 		if (key.startsWith("tdjs")) {

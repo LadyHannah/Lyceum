@@ -108,31 +108,10 @@ $(function() {
 		columns: [[
 			{field: 'ck', checkbox:true, width: 5, align: 'center'},
 		    {field: 'title', title: '标题', width: 70, align: 'center'},
-		    {field: 'infoLevel', title: '等级', width: 10, align: 'center'},
-		    {field: 'marrowed', title: '精华', width: 10, align: 'center',
-		    	formatter: function(value,rec) {
-		    		if (value) {return '<input type="checkbox" checked="checked">';} return '<input type="checkbox">';
-		    	}	
-		    },
-		    {field: 'toped', title: '置顶', width: 10, align: 'center',
-		    	formatter: function(value,rec) {
-		    		if (value) {return '<input type="checkbox" checked="checked">';} return '<input type="checkbox">';
-		    	}	
-		    },
-		    {field: 'hoted', title: '热门', width: 10, align: 'center',
-		    	formatter: function(value,rec) {
-		    		if (value) {return '<input type="checkbox" checked="checked">';} return '<input type="checkbox">';
-		    	}	
-		    },
-		    {field: 'published', title: '发布', width: 10, align: 'center',
-		    	formatter: function(value,rec) {
-		    		if (value) {return '<input type="checkbox" checked="checked">';} return '<input type="checkbox">';
-		    	}	
-		    },
 		    {field: 'releaseDateStr', title: '发布时间', width: 30, align: 'center'},
 		    {field: 'operate', title: '操作', width: 15, align: 'center',
 				formatter: function(value, rec) {
-					return '<a href="<@url value="/cms/info/edit/new?linkId='+ rec.id +'" />" target="_blank">编辑</a>';
+					return '<a href="<@url value="/cms/info/edit/new?linkId='+ rec.id +'" />" target="_blank">Edit</a>';
 				}
 			}
 		]],
