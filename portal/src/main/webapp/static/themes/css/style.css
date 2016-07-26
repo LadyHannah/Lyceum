@@ -45,6 +45,9 @@ h5 {
 	color: #636188;
 	margin: 30px 0;
 }
+.mb10 {
+	margin-bottom: 20px; 
+}
 .weight {
 	font-weight: bold !important;
 }
@@ -148,7 +151,7 @@ h5 {
 	color: #484443;
 	line-height: 22px;
 }
-.english .row .col-md-6 {
+.english .row .col-md-6 .col-md-12 {
 	background: #fff;
 	border: 1px solid #ddd;
 	border-radius: 10px;
@@ -156,6 +159,10 @@ h5 {
 }
 .english .row .col-md-6 {
 	width: 57%;
+	padding: 0;
+}
+.english .row .col-md-4 .col-md-12 {
+	padding: 0;
 }
 .english .row {
 	margin: 40px 0 40px 0;
@@ -244,7 +251,7 @@ h5 {
 	width: 100%;
 	line-height: 40px;
 	height: 40px;
-	padding: 25px 145px 25px 15px;
+	padding: 25px 170px 25px 15px;
 	float: left;
 	font-size: 18px;
 	margin: 3px 0;
@@ -257,7 +264,7 @@ h5 {
 }
 .validate .error {
 	position: absolute;
-	right: 10px;
+	right: 10%;
 	top: 16px;
 	background: url(../images/error.png) left center no-repeat;
 	color: #ff0000;
@@ -265,6 +272,7 @@ h5 {
 	font-family: "微软雅黑";
 	padding: 0 0 0 20px;
 }
+
 .listen .register textarea {
 	margin: 3px 0 0 0;
 	border-radius: 8px;
@@ -293,7 +301,7 @@ h5 {
 	width: 100%;
 }
 .joincon {
-	padding: 30px 0 30px 0;
+	padding: 30px 0 0px 0;
 }
 .joincon img {
 	width: 100%;
@@ -363,6 +371,9 @@ h5 {
 	clear: both;
 	padding: 30px 0 20px 0;
 }
+.charge img {
+	width: 100%;
+}
 .charge h3 {
 	margin: 20px 0 40px 0;
 }
@@ -392,6 +403,9 @@ h5 {
 .course {
 	background: url(../images/japanese_bg.png) repeat-y center top;
 }
+.course img {
+	width: 100%;
+} 
 .course .col-md-6 {
 	padding-left: 5px;
 	padding-right: 5px;
@@ -422,9 +436,6 @@ h5 {
 .course .innormal strong {
 	font-size: 15px;
 	color: #444;
-}
-.course {
-	padding: 35px 0 70px 0;
 }
 .fullimg img {
 	width: 100%;
@@ -542,6 +553,9 @@ h5 {
 .wechat {
 	background: #a2a9af;
 }
+.wechat img {
+	width: 100%;
+}
 .wechat h4 {
 	text-align: center;
 	color: #fff;
@@ -596,7 +610,7 @@ h5 {
 	min-width: 100%; 
 	*width: 100%;
 	height: 50px; 
-	margin: 3px 0; 
+	margin: 4px 0 9px 0; 
 	position: relative; 
 	color: #000; 
 	float: left; 
@@ -618,7 +632,7 @@ h5 {
     width: 100%;
 }
 .diy_select_txt {
-    width: 90%;
+    width: 60%;
     text-align: left;
     font-size: 18px;
     font-family: "微软雅黑";
@@ -630,6 +644,8 @@ h5 {
 .diy_select_btn {
     width: 10%;
     background: url(../images/select_log.png) no-repeat center;
+    position: absolute;
+    right: 0;
 }
 .select-option {
     width: 100%;
@@ -688,4 +704,13 @@ h5 {
 }
 .blue {
 	color: #97cadd;
+}
+.color9 {
+	color: #999;
+}
+.footer {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	text-align: center;
+	margin: 20px 0 20px 0;
 }
