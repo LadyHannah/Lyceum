@@ -83,21 +83,29 @@
 			<h2>国际英语</h2>
 			<h3>International English</h3>
 			<p>${gjyy.description}</p>
-			<#if article??>
-				<#list article as art>
 			<div class="row">
 				<div class="col-md-6 col-md-offset-1">
-					<h4>${art.title}</h4>
-					<h3>${art.subTitle}</h3>
-					<p class="text-left">${art.content}</p>
+				<#if article??>
+				<#list article as art>
+					<div class="col-md-12 mb10">
+						<h4>${art.title}</h4>
+						<h3>${art.subTitle}</h3>
+						<p class="text-left">${art.content}</p>
+					</div>
+				</#list>
+				</#if>
 				</div>
 				<div class="col-md-4 col-md-offset-1">
-					<!-- <img src="${request.contextPath}/themes/images/english_01.jpg" alt=""> -->
-					<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=b'/>">
+					<div class="col-md-12 mb10">
+						<!-- <img src="images/english_01.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=b'/>" alt="">
+					</div>
+					<div class="col-md-12">
+						<!-- <img src="images/english_02.jpg" alt=""> -->
+						<img src="<@url value='/showImage?imagesColumnId=${imagesColumnId}&imgNumber=c'/>" alt="">
+					</div>
 				</div>
 			</div>
-				</#list>
-			</#if>
 		</div>
 	</div>
 	<div class="language">
